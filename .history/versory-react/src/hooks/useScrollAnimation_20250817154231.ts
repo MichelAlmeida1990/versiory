@@ -52,4 +52,25 @@ export const useParallaxScroll = (speed: number = 0.5) => {
       transform: `translateY(${offset}px)`
     }
   };
+};
+
+export const useStaggerAnimation = (items: unknown[], staggerDelay: number = 0.1) => {
+  const refs = items.map(() => useRef(null));
+  const inViews = refs.map(ref => useInView(ref, { 
+    once: true, 
+    amount: 0.1,
+    margin: "-50px 0px -50px 0px"
+  }));
+
+  const getStaggerStyle = (index: number) => ({
+    transform: inViews[index] ? "none" : "translateY(30px)",
+    opacity: inViews[index] ? 1 : 0,
+    transition: `all 0.6s cubic-bezier(0.17, 0.55, 0.55, 1) ${index * staggerDelay}s`
+  });
+
+  return {
+    refs,
+    inViews,
+    getStaggerStyle
+  };
 }; 

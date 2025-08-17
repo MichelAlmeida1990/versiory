@@ -52,4 +52,31 @@ export const useParallaxScroll = (speed: number = 0.5) => {
       transform: `translateY(${offset}px)`
     }
   };
+};
+
+export const useStaggerAnimation = (items: unknown[], staggerDelay: number = 0.1) => {
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
+  const inViews = useRef<boolean[]>([]);
+  
+  // Initialize refs array
+  if (refs.current.length !== items.length) {
+    refs.current = new Array(items.length).fill(null);
+  }
+  
+  // Initialize inViews array
+  if (inViews.current.length !== items.length) {
+    inViews.current = new Array(items.length).fill(false);
+  }
+
+  const getStaggerStyle = (index: number) => ({
+    transform: inViews.current[index] ? "none" : "translateY(30px)",
+    opacity: inViews.current[index] ? 1 : 0,
+    transition: `all 0.6s cubic-bezier(0.17, 0.55, 0.55, 1) ${index * staggerDelay}s`
+  });
+
+  return {
+    refs: refs.current,
+    inViews: inViews.current,
+    getStaggerStyle
+  };
 }; 

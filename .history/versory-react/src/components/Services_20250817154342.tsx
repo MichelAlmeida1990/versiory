@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Globe, Smartphone, Palette, Database, Code, Zap, Shield, TrendingUp, LucideIcon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation';
 
 interface Service {
   id: number;
@@ -92,7 +92,14 @@ const Services = () => {
 
   const headerAnimation = useScrollAnimation({ delay: 0.2 });
   const servicesAnimation = useScrollAnimation({ delay: 0.4 });
+  const servicesStagger = useStaggerAnimation(services, 0.1);
   const statsAnimation = useScrollAnimation({ delay: 0.8 });
+  const statsStagger = useStaggerAnimation([
+    { number: "50+", label: "Projetos Entregues", icon: TrendingUp },
+    { number: "100%", label: "Satisfação", icon: Shield },
+    { number: "24/7", label: "Suporte", icon: Zap },
+    { number: "3x", label: "Mais Conversão", icon: Globe }
+  ], 0.15);
 
   return (
     <section id="servicos" className={`py-20 ${theme === 'dark' ? 'bg-gradient-to-b from-versory-black to-versory-blue/10' : 'bg-transparent'}`}>
@@ -118,38 +125,35 @@ const Services = () => {
         <div ref={servicesAnimation.ref} style={servicesAnimation.style}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="group relative h-full"
-              >
-                <div className={`relative overflow-hidden rounded-2xl p-8 h-full transition-all duration-500 backdrop-blur-sm border group-hover:border-white/60 ${theme === 'dark' ? `${service.gradient} bg-opacity-10 border-white/30` : 'bg-blue-light/70 border-versory-azure/60'}`}>
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6`}>
-                    <service.icon size={32} className="text-white" />
+              <div key={service.id} ref={servicesStagger.refs[index]} style={servicesStagger.getStaggerStyle(index)}>
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="group relative h-full"
+                >
+                  <div className={`relative overflow-hidden rounded-2xl p-8 h-full transition-all duration-500 backdrop-blur-sm border group-hover:border-white/60 ${theme === 'dark' ? `${service.gradient} bg-opacity-10 border-white/30` : 'bg-blue-light/70 border-versory-azure/60'}`}>
+                    <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6`}>
+                      <service.icon size={32} className="text-white" />
+                    </div>
+                    
+                    <h3 className={`text-2xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                      {service.title}
+                    </h3>
+                    
+                    <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
+                      {service.description}
+                    </p>
+                    
+                    <div className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className={`flex items-center space-x-2 ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                          <div className="w-2 h-2 bg-versory-green rounded-full"></div>
+                          <span className="text-sm">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  
-                  <h3 className={`text-2xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    {service.title}
-                  </h3>
-                  
-                  <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}>
-                    {service.description}
-                  </p>
-                  
-                  <div className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className={`flex items-center space-x-2 ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-                        <div className="w-2 h-2 bg-versory-green rounded-full"></div>
-                        <span className="text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -163,25 +167,22 @@ const Services = () => {
               { number: "24/7", label: "Suporte", icon: Zap },
               { number: "3x", label: "Mais Conversão", icon: Globe }
             ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="text-center backdrop-blur-sm border border-versory-azure/60 rounded-2xl p-6"
-              >
-                <div className={`w-12 h-12 bg-gradient-to-r from-versory-green to-versory-azure rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                  <stat.icon size={24} className="text-white" />
-                </div>
-                <p className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                  {stat.number}
-                </p>
-                <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-                  {stat.label}
-                </p>
-              </motion.div>
+              <div key={index} ref={statsStagger.refs[index]} style={statsStagger.getStaggerStyle(index)}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className={`text-center backdrop-blur-sm border border-versory-azure/60 rounded-2xl p-6 ${theme === 'dark' ? 'bg-gradient-to-br from-versory-blue/5 to-versory-azure/5' : 'bg-blue-light/70'}`}
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-r from-versory-green to-versory-azure rounded-xl flex items-center justify-center mx-auto mb-4`}>
+                    <stat.icon size={24} className="text-white" />
+                  </div>
+                  <p className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    {stat.number}
+                  </p>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
+                    {stat.label}
+                  </p>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -190,4 +191,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Services; 
