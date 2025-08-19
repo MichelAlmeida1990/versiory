@@ -113,7 +113,7 @@ const ProjectCarousel3D = () => {
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
       {/* Background */}
-      <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gradient-to-br from-versory-black via-versory-blue/20 to-versory-black' : 'bg-gradient-to-br from-blue-50 via-white to-blue-50'}`} />
+      <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gradient-to-br from-versiory-black via-versiory-blue/20 to-versiory-black' : 'bg-gradient-to-br from-blue-50 via-white to-blue-50'}`} />
       
       {/* Header */}
       <div className="relative z-10 text-center pt-20 pb-10">
@@ -122,7 +122,7 @@ const ProjectCarousel3D = () => {
           animate={{ opacity: 1, y: 0 }}
           className={`text-4xl md:text-6xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
         >
-          <span className="bg-gradient-to-r from-versory-green via-versory-azure to-versory-pink bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-versiory-green via-versiory-azure to-versiory-pink bg-clip-text text-transparent">
             Nossos Projetos
           </span>
         </motion.h2>
@@ -215,8 +215,8 @@ const ProjectCarousel3D = () => {
           whileTap={{ scale: 0.9 }}
           className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
             theme === 'dark' 
-              ? 'border-versory-azure text-versory-azure hover:bg-versory-azure hover:text-black' 
-              : 'border-versory-azure text-versory-azure hover:bg-versory-azure hover:text-white'
+              ? 'border-versiory-azure text-versiory-azure hover:bg-versiory-azure hover:text-black' 
+              : 'border-versiory-azure text-versiory-azure hover:bg-versiory-azure hover:text-white'
           }`}
         >
           <ChevronLeft size={24} />
@@ -232,7 +232,7 @@ const ProjectCarousel3D = () => {
               whileTap={{ scale: 0.8 }}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex 
-                  ? 'bg-versory-azure scale-125' 
+                  ? 'bg-versiory-azure scale-125' 
                   : theme === 'dark' 
                     ? 'bg-white/30 hover:bg-white/50' 
                     : 'bg-gray-400 hover:bg-gray-600'
@@ -247,8 +247,8 @@ const ProjectCarousel3D = () => {
           whileTap={{ scale: 0.9 }}
           className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
             theme === 'dark' 
-              ? 'border-versory-azure text-versory-azure hover:bg-versory-azure hover:text-black' 
-              : 'border-versory-azure text-versory-azure hover:bg-versory-azure hover:text-white'
+              ? 'border-versiory-azure text-versiory-azure hover:bg-versiory-azure hover:text-black' 
+              : 'border-versiory-azure text-versiory-azure hover:bg-versiory-azure hover:text-white'
           }`}
         >
           <ChevronRight size={24} />
@@ -261,8 +261,8 @@ const ProjectCarousel3D = () => {
         animate={{ opacity: 1, y: 0 }}
         className={`relative z-20 mx-auto mt-12 max-w-4xl p-6 rounded-2xl backdrop-blur-md border ${
           theme === 'dark' 
-            ? 'bg-versory-black/60 border-versory-azure/30' 
-            : 'bg-white/60 border-versory-azure/30'
+            ? 'bg-versiory-black/60 border-versiory-azure/30' 
+            : 'bg-white/60 border-versiory-azure/30'
         } shadow-2xl`}
       >
         <div className="text-center">
@@ -274,7 +274,7 @@ const ProjectCarousel3D = () => {
           </p>
           
           <div className="mb-6">
-            <h4 className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-versory-azure' : 'text-versory-azure'}`}>
+            <h4 className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-versiory-azure' : 'text-versiory-azure'}`}>
               Tecnologias Utilizadas:
             </h4>
             <div className="flex flex-wrap justify-center gap-2">
@@ -283,8 +283,8 @@ const ProjectCarousel3D = () => {
                   key={index}
                   className={`px-3 py-1 text-sm rounded-full border ${
                     theme === 'dark' 
-                      ? 'bg-versory-azure/20 text-versory-azure border-versory-azure/30' 
-                      : 'bg-versory-azure/10 text-versory-azure border-versory-azure/20'
+                      ? 'bg-versiory-azure/20 text-versiory-azure border-versiory-azure/30' 
+                      : 'bg-versiory-azure/10 text-versiory-azure border-versiory-azure/20'
                   }`}
                 >
                   {tech}
@@ -301,7 +301,7 @@ const ProjectCarousel3D = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-6 py-3 bg-versory-green text-black rounded-lg hover:bg-versory-green/80 transition-colors font-semibold"
+                className="flex items-center gap-2 px-6 py-3 bg-versiory-green text-black rounded-lg hover:bg-versiory-green/80 transition-colors font-semibold"
               >
                 <ExternalLink size={18} />
                 Ver Demo
@@ -314,7 +314,7 @@ const ProjectCarousel3D = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-6 py-3 bg-versory-black/50 text-white rounded-lg hover:bg-versory-black/70 transition-colors font-semibold"
+                className="flex items-center gap-2 px-6 py-3 bg-versiory-black/50 text-white rounded-lg hover:bg-versiory-black/70 transition-colors font-semibold"
               >
                 <Github size={18} />
                 Ver Código

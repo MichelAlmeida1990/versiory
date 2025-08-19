@@ -12,7 +12,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed top-24 right-8 z-40 w-12 h-12 bg-gradient-to-r from-versory-green to-versory-azure rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+              className="fixed top-24 right-8 z-40 w-12 h-12 bg-gradient-to-r from-versiory-green to-versiory-azure rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
     >
       <motion.div
         initial={false}

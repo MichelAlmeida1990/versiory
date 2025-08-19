@@ -15,12 +15,12 @@ Versão moderna da Versiory desenvolvida com React, Next.js e tecnologias de pon
 
 ```css
 /* Cores principais da Versiory */
---versory-blue: #031f5f
---versory-azure: #00afee
---versory-pink: #ca00ca
---versory-brown: #c2af00
---versory-green: #ccff00
---versory-black: #000000
+--versiory-blue: #031f5f
+--versiory-azure: #00afee
+--versiory-pink: #ca00ca
+--versiory-brown: #c2af00
+--versiory-green: #ccff00
+--versiory-black: #000000
 ```
 
 ## ✨ Funcionalidades

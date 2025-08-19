@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         // Paleta de cores da Versiory
-        versory: {
+        versiory: {
           blue: '#031f5f',
           azure: '#00afee',
           pink: '#ca00ca',

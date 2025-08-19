@@ -111,7 +111,7 @@ html[data-theme="dark"] body {
 }
 
 /* Sobrescrever qualquer classe do Tailwind que possa estar interferindo */
-html[data-theme="light"] .bg-versory-black {
+html[data-theme="light"] .bg-versiory-black {
   background-color: #ffffff !important;
 }
 

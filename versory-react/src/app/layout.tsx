@@ -11,13 +11,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Versory - Desenvolvimento Web Moderno',
+  title: 'Versiory - Desenvolvimento Web Moderno',
   description: 'Especialistas em desenvolvimento web moderno e soluções digitais inovadoras. React, Next.js, Django e muito mais.',
   keywords: 'desenvolvimento web, React, Next.js, Django, Firebase, sites responsivos, aplicações web',
-  authors: [{ name: 'Versory Team' }],
+  authors: [{ name: 'Versiory Team' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Versory - Desenvolvimento Web Moderno',
+    title: 'Versiory - Desenvolvimento Web Moderno',
     description: 'Especialistas em desenvolvimento web moderno e soluções digitais inovadoras.',
     type: 'website',
     locale: 'pt_BR',

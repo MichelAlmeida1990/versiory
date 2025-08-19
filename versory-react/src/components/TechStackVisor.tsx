@@ -135,7 +135,7 @@ const TechStackVisor = () => {
         onClick={() => setIsOpen(true)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-versory-green to-versory-azure text-black px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-versiory-green to-versiory-azure text-black px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
       >
         <Code size={20} />
         <span>Tech Stack</span>
@@ -164,21 +164,21 @@ const TechStackVisor = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className={`relative w-full max-w-4xl border border-versory-azure/30 rounded-2xl p-8 shadow-2xl ${theme === 'dark' ? 'bg-gradient-to-br from-versory-black via-versory-blue/20 to-versory-black' : 'bg-gradient-to-br from-white via-blue-50/20 to-white'}`}
+              className={`relative w-full max-w-4xl border border-versiory-azure/30 rounded-2xl p-8 shadow-2xl ${theme === 'dark' ? 'bg-gradient-to-br from-versiory-black via-versiory-blue/20 to-versiory-black' : 'bg-gradient-to-br from-white via-blue-50/20 to-white'}`}
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-versory-green/20 to-versory-azure/20 rounded-lg flex items-center justify-center">
-                    <Code size={24} className="text-versory-green" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-versiory-green/20 to-versiory-azure/20 rounded-lg flex items-center justify-center">
+                    <Code size={24} className="text-versiory-green" />
                   </div>
                   <div>
                     <h2 className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                      <span className="bg-gradient-to-r from-versory-green via-versory-azure to-versory-pink bg-clip-text text-transparent">
+                      <span className="bg-gradient-to-r from-versiory-green via-versiory-azure to-versiory-pink bg-clip-text text-transparent">
                         Tech Stack
                       </span>
                     </h2>
-                    <p className="text-versory-azure/80 text-sm">Nossas Tecnologias</p>
+                    <p className="text-versiory-azure/80 text-sm">Nossas Tecnologias</p>
                   </div>
                 </div>
                 
@@ -186,14 +186,14 @@ const TechStackVisor = () => {
                   onClick={() => setIsOpen(false)}
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`w-10 h-10 border border-versory-azure/60 rounded-full flex items-center justify-center text-versory-azure hover:bg-versory-azure hover:text-black transition-all duration-300 ${theme === 'dark' ? 'bg-versory-black/30' : 'bg-blue-light/70'}`}
+                  className={`w-10 h-10 border border-versiory-azure/60 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300 ${theme === 'dark' ? 'bg-versiory-black/30' : 'bg-blue-light/70'}`}
                 >
                   <X size={20} />
                 </motion.button>
               </div>
 
               {/* Visor Container */}
-              <div className={`relative overflow-hidden border border-versory-azure/60 rounded-xl p-6 ${theme === 'dark' ? 'bg-versory-black/30' : 'bg-blue-light/70'}`}>
+              <div className={`relative overflow-hidden border border-versiory-azure/60 rounded-xl p-6 ${theme === 'dark' ? 'bg-versiory-black/30' : 'bg-blue-light/70'}`}>
                 {/* Marquee Container */}
                 <div className="flex space-x-8 animate-marquee">
                   {/* Primeira linha de ícones */}
@@ -217,7 +217,7 @@ const TechStackVisor = () => {
                           filter: 'brightness(1.5)',
                         }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-16 h-16 rounded-xl flex items-center justify-center border border-versory-azure/20 backdrop-blur-sm transition-all duration-300 cursor-pointer"
+                        className="w-16 h-16 rounded-xl flex items-center justify-center border border-versiory-azure/20 backdrop-blur-sm transition-all duration-300 cursor-pointer"
                         style={{ 
                           backgroundColor: tech.bgColor,
                           color: tech.color
@@ -233,11 +233,11 @@ const TechStackVisor = () => {
                             initial={{ opacity: 0, y: 10, scale: 0.8 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                            className="absolute -top-12 bg-versory-black/90 border border-versory-azure/30 rounded-lg px-3 py-2 text-xs text-white backdrop-blur-sm z-10"
+                            className="absolute -top-12 bg-versiory-black/90 border border-versiory-azure/30 rounded-lg px-3 py-2 text-xs text-white backdrop-blur-sm z-10"
                             style={{ color: tech.color }}
                           >
                             {tech.name}
-                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-versory-black/90"></div>
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-versiory-black/90"></div>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -266,7 +266,7 @@ const TechStackVisor = () => {
                           filter: 'brightness(1.5)',
                         }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-16 h-16 rounded-xl flex items-center justify-center border border-versory-azure/20 backdrop-blur-sm transition-all duration-300 cursor-pointer"
+                        className="w-16 h-16 rounded-xl flex items-center justify-center border border-versiory-azure/20 backdrop-blur-sm transition-all duration-300 cursor-pointer"
                         style={{ 
                           backgroundColor: tech.bgColor,
                           color: tech.color
@@ -303,7 +303,7 @@ const TechStackVisor = () => {
                           filter: 'brightness(1.3)',
                         }}
                         whileTap={{ scale: 0.8 }}
-                        className="w-12 h-12 rounded-lg flex items-center justify-center border border-versory-pink/20 backdrop-blur-sm transition-all duration-300 cursor-pointer"
+                        className="w-12 h-12 rounded-lg flex items-center justify-center border border-versiory-pink/20 backdrop-blur-sm transition-all duration-300 cursor-pointer"
                         style={{ 
                           backgroundColor: tech.bgColor,
                           color: tech.color
@@ -321,7 +321,7 @@ const TechStackVisor = () => {
 
               {/* Footer */}
               <div className="mt-8 text-center">
-                <p className="text-versory-azure/80 text-sm">
+                <p className="text-versiory-azure/80 text-sm">
                   Passe o mouse sobre os ícones para ver as animações interativas
                 </p>
                 <div className={`flex justify-center space-x-4 mt-4 text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>

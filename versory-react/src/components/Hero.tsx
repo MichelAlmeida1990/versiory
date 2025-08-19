@@ -88,7 +88,7 @@ const Hero = () => {
                        delay: index * 0.1 + 1.5
                      }
                    }}
-                                       className="inline-block bg-gradient-to-r from-versory-green to-versory-azure bg-clip-text text-transparent"
+                                       className="inline-block bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent"
                     style={{
                       animationDelay: `${index * 0.1}s`,
                       transformStyle: "preserve-3d"
@@ -100,7 +100,7 @@ const Hero = () => {
                                <motion.span
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{ duration: 0.8, repeat: Infinity }}
-                  className="inline-block w-1 h-20 bg-versory-azure ml-1"
+                  className="inline-block w-1 h-20 bg-versiory-azure ml-1"
                 />
              </motion.h1>
           </motion.div>
@@ -114,7 +114,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
                                      <motion.p
-              className={`text-3xl md:text-4xl mb-12 max-w-3xl mx-auto font-bold ${theme === 'dark' ? 'text-white/90' : 'text-versory-green'}`}
+              className={`text-3xl md:text-4xl mb-12 max-w-3xl mx-auto font-bold ${theme === 'dark' ? 'text-white/90' : 'text-versiory-green'}`}
             >
               {description.split('').map((letter, index) => (
                 <motion.span
@@ -153,7 +153,7 @@ const Hero = () => {
             className="flex justify-center items-center"
           >
             <motion.button
-              className="px-10 py-4 bg-versory-green text-versory-black font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out text-lg"
+              className="px-10 py-4 bg-versiory-green text-versiory-black font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out text-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -170,7 +170,7 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <ChevronDown size={32} className="text-versory-azure" />
+        <ChevronDown size={32} className="text-versiory-azure" />
       </motion.div>
 
       {/* Theme Toggle */}

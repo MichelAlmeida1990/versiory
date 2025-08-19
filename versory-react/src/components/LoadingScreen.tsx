@@ -59,7 +59,7 @@ const LoadingScreen = () => {
             >
               <Image 
                 src="/images/logo.png" 
-                alt="Versory Logo" 
+                alt="versiory Logo" 
                 width={96}
                 height={96}
                 className="w-full h-full object-contain"
@@ -77,7 +77,7 @@ const LoadingScreen = () => {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="absolute inset-0 bg-gradient-to-br from-versory-azure/30 via-versory-pink/30 to-versory-green/30 rounded-full blur-xl"
+              className="absolute inset-0 bg-gradient-to-br from-versiory-azure/30 via-versiory-pink/30 to-versiory-green/30 rounded-full blur-xl"
             />
           </div>
           
@@ -86,7 +86,7 @@ const LoadingScreen = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-4xl font-bold bg-gradient-to-r from-versory-green to-versory-azure bg-clip-text text-transparent"
+            className="text-4xl font-bold bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent"
           >
             VERSIORY
           </motion.h1>
@@ -97,7 +97,7 @@ const LoadingScreen = () => {
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ duration: 2, ease: "easeInOut" }}
-          className="w-64 h-1 bg-gradient-to-r from-versory-green to-versory-azure rounded-full mx-auto mb-4"
+          className="w-64 h-1 bg-gradient-to-r from-versiory-green to-versiory-azure rounded-full mx-auto mb-4"
         />
 
         {/* Loading Text */}
@@ -105,7 +105,7 @@ const LoadingScreen = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="text-versory-azure/80 text-sm"
+          className="text-versiory-azure/80 text-sm"
         >
           Carregando projetos...
         </motion.p>
@@ -130,7 +130,7 @@ const LoadingScreen = () => {
                 repeat: Infinity,
                 delay: Math.random() * 2,
               }}
-              className="absolute w-1 h-1 bg-versory-azure rounded-full"
+              className="absolute w-1 h-1 bg-versiory-azure rounded-full"
             />
           ))}
         </div>

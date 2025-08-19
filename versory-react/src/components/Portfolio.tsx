@@ -35,11 +35,10 @@ const Portfolio = () => {
       id: 1,
       title: "App de Academia",
       description: "Aplicação React completa e profissional para gestão de academias. Sistema robusto com autenticação Firebase, dashboard interativo, gerenciamento de perfis, catálogo de exercícios e estatísticas avançadas com gráficos.",
-      image: "/images/image_013.png",
-      mockup: "/images/mockup-1.png",
+      image: "/images/academia-unsplash.png?v=1",
       category: "mobile",
       technologies: ["React 18", "Material-UI", "Firebase", "Chart.js", "Framer Motion", "React Router"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      demoUrl: "https://michelalmeida1990.github.io/App-de-academia/",
       githubUrl: "https://github.com/michelalmeida1990",
       featured: true,
       stats: {
@@ -53,11 +52,10 @@ const Portfolio = () => {
       id: 2,
       title: "Sistema de Gestão Escolar",
       description: "Sistema completo full-stack para gestão acadêmica e administrativa de escolas. Inclui módulos de alunos, professores, turmas, notas, frequência, biblioteca e financeiro.",
-      image: "/images/image_017.png",
-      mockup: "/images/mockup-2.png",
+      image: "/images/gestao-escolar-unsplash.png?v=1",
       category: "system",
       technologies: ["Python", "Django", "Bootstrap", "Chart.js", "PostgreSQL"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      demoUrl: "https://michel1990.pythonanywhere.com/",
       githubUrl: "https://github.com/michelalmeida1990",
       featured: true,
       stats: {
@@ -71,11 +69,10 @@ const Portfolio = () => {
       id: 3,
       title: "Barbearia do Di",
       description: "Site responsivo para barbearia com sistema de agendamento e galeria de serviços. Interface moderna e funcionalidades de agendamento online.",
-      image: "/images/image_012.png",
-      mockup: "/images/mockup-3.png",
+      image: "/images/barbearia-unsplash.png?v=2",
       category: "web",
       technologies: ["HTML", "CSS", "JavaScript", "Responsive"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      demoUrl: "https://barbearia-do-di.vercel.app/",
       githubUrl: "https://github.com/michelalmeida1990",
       icon: <Monitor className="w-6 h-6" />
     },
@@ -83,10 +80,10 @@ const Portfolio = () => {
       id: 4,
       title: "Santo Drink",
       description: "E-commerce de bebidas com catálogo de produtos e sistema de carrinho de compras. Plataforma completa para venda online de bebidas.",
-      image: "/images/image_015.png",
+      image: "/images/tech-development.png",
       category: "ecommerce",
       technologies: ["HTML", "CSS", "JavaScript", "E-commerce"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      demoUrl: "https://michelalmeida1990.github.io/SITE-DE-BEBIDAS-DO-SANTO/",
       githubUrl: "https://github.com/michelalmeida1990",
       icon: <ShoppingCart className="w-6 h-6" />
     },
@@ -97,7 +94,7 @@ const Portfolio = () => {
       image: "/images/Psicologa.png",
       category: "professional",
       technologies: ["HTML", "CSS", "JavaScript", "Google Meet", "Responsive"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      demoUrl: "https://michelalmeida1990.github.io/Projeto-Psicologa/",
       githubUrl: "https://github.com/michelalmeida1990",
       icon: <Building className="w-6 h-6" />
     },
@@ -108,18 +105,18 @@ const Portfolio = () => {
       image: "/images/imobiliaria.png",
       category: "web",
       technologies: ["HTML", "CSS", "JavaScript", "Filtros", "Responsive"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      demoUrl: "https://projeto-imobiliaria-five.vercel.app/",
       githubUrl: "https://github.com/michelalmeida1990",
       icon: <Monitor className="w-6 h-6" />
     },
     {
       id: 7,
-      title: "Portfólio Fotógrafo",
-      description: "Site profissional para fotógrafo com galeria de trabalhos, portfólio interativo e sistema de contato. Design moderno e elegante.",
-      image: "/images/image_020.png",
+      title: "Site Fotógrafa Cristiane Justino",
+      description: "Site profissional para fotógrafa com portfólio, sistema de agendamento online, galeria de trabalhos e formulário de contato. Design elegante e responsivo.",
+      image: "/images/fotografo.png",
       category: "professional",
-      technologies: ["React", "Framer Motion", "Tailwind CSS", "Responsive"],
-      demoUrl: "https://michelalmeida1990.github.io/Portfolio-Profissional/",
+      technologies: ["HTML", "CSS", "JavaScript", "Agendamento"],
+      demoUrl: "https://michelalmeida1990.github.io/Projeto-Fotografo/",
       githubUrl: "https://github.com/michelalmeida1990",
       icon: <Camera className="w-6 h-6" />
     }
@@ -130,12 +127,12 @@ const Portfolio = () => {
     : projects.filter(project => project.category === filter);
 
   const categories = [
-    { key: 'all', label: 'Todos os Projetos', color: 'from-versory-green to-versory-azure', icon: <Star className="w-5 h-5" /> },
-    { key: 'mobile', label: 'Aplicativos Mobile', color: 'from-versory-azure to-versory-pink', icon: <Smartphone className="w-5 h-5" /> },
-    { key: 'system', label: 'Sistemas', color: 'from-versory-pink to-versory-green', icon: <Building className="w-5 h-5" /> },
-    { key: 'web', label: 'Sites Web', color: 'from-versory-green to-versory-brown', icon: <Monitor className="w-5 h-5" /> },
-    { key: 'ecommerce', label: 'E-commerce', color: 'from-versory-brown to-versory-blue', icon: <ShoppingCart className="w-5 h-5" /> },
-    { key: 'professional', label: 'Sites Profissionais', color: 'from-versory-blue to-versory-azure', icon: <Building className="w-5 h-5" /> }
+    { key: 'all', label: 'Todos os Projetos', color: 'from-versiory-green to-versiory-azure', icon: <Star className="w-5 h-5" /> },
+    { key: 'mobile', label: 'Aplicativos Mobile', color: 'from-versiory-azure to-versiory-pink', icon: <Smartphone className="w-5 h-5" /> },
+    { key: 'system', label: 'Sistemas', color: 'from-versiory-pink to-versiory-green', icon: <Building className="w-5 h-5" /> },
+    { key: 'web', label: 'Sites Web', color: 'from-versiory-green to-versiory-brown', icon: <Monitor className="w-5 h-5" /> },
+    { key: 'ecommerce', label: 'E-commerce', color: 'from-versiory-brown to-versiory-blue', icon: <ShoppingCart className="w-5 h-5" /> },
+    { key: 'professional', label: 'Sites Profissionais', color: 'from-versiory-blue to-versiory-azure', icon: <Building className="w-5 h-5" /> }
   ];
 
   const nextProject = () => {
@@ -155,18 +152,18 @@ const Portfolio = () => {
   }, [filter]);
 
   return (
-    <section id="portfolio" className={`py-20 relative overflow-hidden ${theme === 'dark' ? 'bg-gradient-to-b from-versory-black to-versory-blue/10' : 'bg-transparent'}`}>
+    <section id="portfolio" className={`py-20 relative overflow-hidden ${theme === 'dark' ? 'bg-gradient-to-b from-versiory-black to-versiory-blue/10' : 'bg-transparent'}`}>
       {/* Efeito de Gradiente Animado */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-versory-green/5 via-versory-azure/5 to-versory-pink/5"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-versory-green/3 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-transparent via-versory-azure/3 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-versiory-green/5 via-versiory-azure/5 to-versiory-pink/5"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-versiory-green/3 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-transparent via-versiory-azure/3 to-transparent"></div>
         
         {/* Elementos decorativos estáticos */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-versory-green/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-versory-azure/10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-versory-pink/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 right-1/3 w-20 h-20 bg-versory-green/10 rounded-full blur-xl"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-versiory-green/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-versiory-azure/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-versiory-pink/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 right-1/3 w-20 h-20 bg-versiory-green/10 rounded-full blur-xl"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -177,13 +174,13 @@ const Portfolio = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-versory-pink/20 to-versory-green/20 backdrop-blur-sm border border-versory-pink/30 rounded-full px-6 py-3 mb-6">
-            <Star size={20} className="text-versory-green" />
-            <span className="text-versory-pink font-semibold">Portfólio Real</span>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-versiory-pink/20 to-versiory-green/20 backdrop-blur-sm border border-versiory-pink/30 rounded-full px-6 py-3 mb-6">
+            <Star size={20} className="text-versiory-green" />
+            <span className="text-versiory-pink font-semibold">Portfólio Real</span>
           </div>
           
           <h2 className={`text-4xl lg:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            <span className="bg-gradient-to-r from-versory-green via-versory-azure to-versory-pink bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-versiory-green via-versiory-azure to-versiory-pink bg-clip-text text-transparent">
               PROJETOS
             </span>
           </h2>
@@ -221,7 +218,7 @@ const Portfolio = () => {
                   className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 relative overflow-hidden ${
                     filter === category.key
                       ? `bg-gradient-to-r ${category.color} text-black`
-                      : `${theme === 'dark' ? 'bg-versory-black/50' : 'bg-blue-light'} ${theme === 'dark' ? 'text-white' : 'text-gray-800'} border border-versory-azure/30 hover:border-versory-green/50`
+                      : `${theme === 'dark' ? 'bg-versiory-black/50' : 'bg-blue-light'} ${theme === 'dark' ? 'text-white' : 'text-gray-800'} border border-versiory-azure/30 hover:border-versiory-green/50`
                   }`}
                 >
                   {/* Efeito de brilho no hover */}
@@ -251,13 +248,13 @@ const Portfolio = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -100 }}
                     transition={{ duration: 0.5 }}
-                    className="grid lg:grid-cols-2 gap-12 items-center"
+                    className="grid lg:grid-cols-2 gap-12 items-stretch"
                   >
                     {/* Mockup do Projeto */}
                     <div className="relative group">
                       <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-versory-blue/10 to-versory-azure/10 backdrop-blur-sm border border-versory-azure/60 shadow-2xl"
+                        className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-versiory-blue/10 to-versiory-azure/10 backdrop-blur-sm border border-versiory-azure/60 shadow-2xl h-full"
                         style={{
                           background: `linear-gradient(135deg, 
                             ${theme === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.1)'} 0%, 
@@ -272,24 +269,23 @@ const Portfolio = () => {
                         {/* Mockup Principal */}
                         <div className="relative">
                           {project.mockup ? (
-                            <div className="relative group">
+                            <div className="relative group aspect-video overflow-hidden rounded-xl">
                               <Image 
                                 src={project.mockup} 
                                 alt={`Mockup ${project.title}`}
-                                width={800}
-                                height={600}
-                                className="w-full h-auto"
+                                fill
+                                className="object-cover w-full h-full"
                               />
                               
                               {/* Efeito de brilho */}
                               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                           ) : (
-                            <div className="aspect-video bg-gradient-to-br from-versory-black/50 to-versory-blue/20 flex items-center justify-center overflow-hidden rounded-xl">
+                            <div className="aspect-video bg-gradient-to-br from-versiory-black/50 to-versiory-blue/20 flex items-center justify-center overflow-hidden rounded-xl">
                               <motion.div
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
-                                className="w-full h-full"
+                                className="w-full h-full relative"
                               >
                                 <Image 
                                   src={project.image} 
@@ -304,13 +300,13 @@ const Portfolio = () => {
                         
                         {/* Overlay com Stats */}
                         {project.stats && (
-                          <div className="absolute top-4 right-4 bg-versory-black/80 backdrop-blur-sm rounded-lg p-3">
+                          <div className="absolute top-4 right-4 bg-versiory-black/80 backdrop-blur-sm rounded-lg p-3">
                             <div className="flex items-center space-x-2 text-white/90 text-sm">
                               <Users size={16} />
                               <span>{project.stats.users}</span>
                             </div>
                             <div className="flex items-center space-x-2 text-white/90 text-sm">
-                              <Star size={16} className="text-versory-green" />
+                              <Star size={16} className="text-versiory-green" />
                               <span>{project.stats.rating}</span>
                             </div>
                           </div>
@@ -318,14 +314,14 @@ const Portfolio = () => {
 
                         {/* Badge Featured */}
                         {project.featured && (
-                          <div className="absolute top-4 left-4 bg-gradient-to-r from-versory-green to-versory-azure text-black px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1 shadow-lg animate-pulse">
+                          <div className="absolute top-4 left-4 bg-gradient-to-r from-versiory-green to-versiory-azure text-black px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1 shadow-lg animate-pulse">
                             <Star size={12} />
                             <span>Destaque</span>
                           </div>
                         )}
 
                         {/* Badge Categoria */}
-                        <div className="absolute bottom-4 left-4 bg-versory-black/80 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
+                        <div className="absolute bottom-4 left-4 bg-versiory-black/80 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
                           {project.icon}
                           <span className="text-white/90 text-sm font-medium">
                             {categories.find(cat => cat.key === project.category)?.label}
@@ -339,7 +335,7 @@ const Portfolio = () => {
                       <div>
                         <div className="flex items-center space-x-3 mb-4">
                           {project.icon && (
-                            <div className="p-2 bg-gradient-to-r from-versory-green to-versory-azure rounded-lg">
+                            <div className="p-2 bg-gradient-to-r from-versiory-green to-versiory-azure rounded-lg">
                               {project.icon}
                             </div>
                           )}
@@ -354,12 +350,12 @@ const Portfolio = () => {
 
                       {/* Tecnologias */}
                       <div>
-                        <h4 className="bg-gradient-to-r from-versory-green to-versory-azure bg-clip-text text-transparent font-semibold mb-3">Tecnologias Utilizadas:</h4>
+                        <h4 className="bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent font-semibold mb-3">Tecnologias Utilizadas:</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className={`px-3 py-1 border border-versory-azure/60 rounded-full text-sm ${theme === 'dark' ? 'bg-versory-black/30 text-white/80' : 'bg-blue-light/70 text-gray-700'}`}
+                              className={`px-3 py-1 border border-versiory-azure/60 rounded-full text-sm ${theme === 'dark' ? 'bg-versiory-black/30 text-white/80' : 'bg-blue-light/70 text-gray-700'}`}
                             >
                               {tech}
                             </span>
@@ -375,7 +371,7 @@ const Portfolio = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(204, 255, 0, 0.3)" }}
                           whileTap={{ scale: 0.95 }}
-                          className="bg-versory-green text-black px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
+                          className="bg-versiory-green text-black px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
                         >
                           <ExternalLink size={20} />
                           <span>Ver Demo</span>
@@ -386,7 +382,7 @@ const Portfolio = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="border-2 border-versory-azure text-versory-azure px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-versory-azure hover:text-black transition-all duration-300"
+                          className="border-2 border-versiory-azure text-versiory-azure px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-versiory-azure hover:text-black transition-all duration-300"
                         >
                           <Github size={20} />
                           <span>Código</span>
@@ -410,7 +406,7 @@ const Portfolio = () => {
                 onClick={prevProject}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className={`w-12 h-12 border border-versory-azure/60 rounded-full flex items-center justify-center text-versory-azure hover:border-versory-green/70 transition-all duration-300 ${theme === 'dark' ? 'bg-versory-black/30' : 'bg-blue-light/70'}`}
+                className={`w-12 h-12 border border-versiory-azure/60 rounded-full flex items-center justify-center text-versiory-azure hover:border-versiory-green/70 transition-all duration-300 ${theme === 'dark' ? 'bg-versiory-black/30' : 'bg-blue-light/70'}`}
               >
                 <ChevronLeft size={24} />
               </motion.button>
@@ -424,8 +420,8 @@ const Portfolio = () => {
                     whileTap={{ scale: 0.8 }}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentProject
-                        ? 'bg-versory-green scale-125'
-                        : 'bg-versory-azure/50 hover:bg-versory-azure'
+                        ? 'bg-versiory-green scale-125'
+                        : 'bg-versiory-azure/50 hover:bg-versiory-azure'
                     }`}
                   />
                 ))}
@@ -435,7 +431,7 @@ const Portfolio = () => {
                 onClick={nextProject}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className={`w-12 h-12 border border-versory-azure/60 rounded-full flex items-center justify-center text-versory-azure hover:border-versory-green/70 transition-all duration-300 ${theme === 'dark' ? 'bg-versory-black/30' : 'bg-blue-light/70'}`}
+                className={`w-12 h-12 border border-versiory-azure/60 rounded-full flex items-center justify-center text-versiory-azure hover:border-versiory-green/70 transition-all duration-300 ${theme === 'dark' ? 'bg-versiory-black/30' : 'bg-blue-light/70'}`}
               >
                 <ChevronRight size={24} />
               </motion.button>

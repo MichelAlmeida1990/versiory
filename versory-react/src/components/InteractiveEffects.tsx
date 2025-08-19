@@ -170,10 +170,10 @@ const InteractiveEffects = () => {
             }}
             className="absolute"
           >
-            {i % 4 === 0 && <Sparkles size={20} className="text-versory-azure drop-shadow-lg" />}
-            {i % 4 === 1 && <Zap size={20} className="text-versory-green drop-shadow-lg" />}
-            {i % 4 === 2 && <Star size={20} className="text-versory-pink drop-shadow-lg" />}
-            {i % 4 === 3 && <Heart size={20} className="text-versory-brown drop-shadow-lg" />}
+            {i % 4 === 0 && <Sparkles size={20} className="text-versiory-azure drop-shadow-lg" />}
+            {i % 4 === 1 && <Zap size={20} className="text-versiory-green drop-shadow-lg" />}
+            {i % 4 === 2 && <Star size={20} className="text-versiory-pink drop-shadow-lg" />}
+            {i % 4 === 3 && <Heart size={20} className="text-versiory-brown drop-shadow-lg" />}
           </motion.div>
         ))}
       </div>
@@ -188,8 +188,8 @@ const InteractiveEffects = () => {
         }}
         className="absolute w-12 h-12 pointer-events-none"
       >
-        <div className="w-full h-full bg-gradient-to-br from-versory-green/20 to-versory-azure/20 rounded-full border border-versory-green/30 backdrop-blur-sm flex items-center justify-center">
-          <div className="w-2 h-2 bg-versory-green rounded-full animate-pulse" />
+        <div className="w-full h-full bg-gradient-to-br from-versiory-green/20 to-versiory-azure/20 rounded-full border border-versiory-green/30 backdrop-blur-sm flex items-center justify-center">
+          <div className="w-2 h-2 bg-versiory-green rounded-full animate-pulse" />
         </div>
       </motion.div>
 
@@ -205,7 +205,7 @@ const InteractiveEffects = () => {
               repeat: Infinity,
               delay: Math.random() * 2,
             }}
-            className="border border-versory-azure/20"
+            className="border border-versiory-azure/20"
           />
         ))}
       </div>

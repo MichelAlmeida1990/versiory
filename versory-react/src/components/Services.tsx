@@ -27,8 +27,8 @@ const Services = () => {
       icon: Globe,
       category: "web",
       features: ["Design Responsivo", "SEO Otimizado", "Performance", "Analytics"],
-      color: "from-versory-pink to-versory-azure",
-      gradient: "bg-gradient-to-br from-versory-pink to-versory-azure"
+      color: "from-versiory-pink to-versiory-azure",
+      gradient: "bg-gradient-to-br from-versiory-pink to-versiory-azure"
     },
     {
       id: 2,
@@ -37,8 +37,8 @@ const Services = () => {
       icon: Zap,
       category: "web",
       features: ["A/B Testing", "Conversão", "Integração", "Tracking"],
-      color: "from-versory-azure to-versory-blue",
-      gradient: "bg-gradient-to-br from-versory-azure to-versory-blue"
+      color: "from-versiory-azure to-versiory-blue",
+      gradient: "bg-gradient-to-br from-versiory-azure to-versiory-blue"
     },
     {
       id: 3,
@@ -47,8 +47,8 @@ const Services = () => {
       icon: Smartphone,
       category: "mobile",
       features: ["GPS", "Pagamentos", "Notificações", "Tracking"],
-      color: "from-versory-green to-versory-brown",
-      gradient: "bg-gradient-to-br from-versory-green to-versory-brown"
+      color: "from-versiory-green to-versiory-brown",
+      gradient: "bg-gradient-to-br from-versiory-green to-versiory-brown"
     },
     {
       id: 4,
@@ -57,8 +57,8 @@ const Services = () => {
       icon: Database,
       category: "system",
       features: ["Carrinho", "Pagamentos", "Estoque", "Relatórios"],
-      color: "from-versory-blue to-versory-pink",
-      gradient: "bg-gradient-to-br from-versory-blue to-versory-pink"
+      color: "from-versiory-blue to-versiory-pink",
+      gradient: "bg-gradient-to-br from-versiory-blue to-versiory-pink"
     },
     {
       id: 5,
@@ -67,8 +67,8 @@ const Services = () => {
       icon: Palette,
       category: "design",
       features: ["Wireframes", "Prototipagem", "Design System", "Usabilidade"],
-      color: "from-versory-pink to-versory-green",
-      gradient: "bg-gradient-to-br from-versory-pink to-versory-green"
+      color: "from-versiory-pink to-versiory-green",
+      gradient: "bg-gradient-to-br from-versiory-pink to-versiory-green"
     },
     {
       id: 6,
@@ -77,8 +77,8 @@ const Services = () => {
       icon: Code,
       category: "system",
       features: ["Dashboard", "Módulos", "Relatórios", "API"],
-      color: "from-versory-brown to-versory-azure",
-      gradient: "bg-gradient-to-br from-versory-brown to-versory-azure"
+      color: "from-versiory-brown to-versiory-azure",
+      gradient: "bg-gradient-to-br from-versiory-brown to-versiory-azure"
     }
   ];
 
@@ -87,16 +87,16 @@ const Services = () => {
   const statsAnimation = useScrollAnimation({ delay: 0.8 });
 
   return (
-    <section id="servicos" className={`py-20 ${theme === 'dark' ? 'bg-gradient-to-b from-versory-black to-versory-blue/10' : 'bg-transparent'}`}>
+    <section id="servicos" className={`py-20 ${theme === 'dark' ? 'bg-gradient-to-b from-versiory-black to-versiory-blue/10' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerAnimation.ref} style={headerAnimation.style} className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-versory-azure/20 to-versory-pink/20 backdrop-blur-sm border border-versory-azure/30 rounded-full px-6 py-3 mb-6">
-            <Code size={20} className="text-versory-azure" />
-            <span className="text-versory-pink font-semibold">Nossos Serviços</span>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-versiory-azure/20 to-versiory-pink/20 backdrop-blur-sm border border-versiory-azure/30 rounded-full px-6 py-3 mb-6">
+            <Code size={20} className="text-versiory-azure" />
+            <span className="text-versiory-pink font-semibold">Nossos Serviços</span>
           </div>
           
           <h2 className={`text-4xl lg:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            <span className="bg-gradient-to-r from-versory-green via-versory-azure to-versory-pink bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-versiory-green via-versiory-azure to-versiory-pink bg-clip-text text-transparent">
               SERVIÇOS
             </span>
           </h2>
@@ -119,7 +119,7 @@ const Services = () => {
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="group relative h-full"
               >
-                <div className={`relative overflow-hidden rounded-2xl p-8 h-full transition-all duration-500 backdrop-blur-sm border group-hover:border-white/60 ${theme === 'dark' ? `${service.gradient} bg-opacity-10 border-white/30` : 'bg-blue-light/70 border-versory-azure/60'}`}>
+                <div className={`relative overflow-hidden rounded-2xl p-8 h-full transition-all duration-500 backdrop-blur-sm border group-hover:border-white/60 ${theme === 'dark' ? `${service.gradient} bg-opacity-10 border-white/30` : 'bg-blue-light/70 border-versiory-azure/60'}`}>
                   <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6`}>
                     <service.icon size={32} className="text-white" />
                   </div>
@@ -135,7 +135,7 @@ const Services = () => {
                   <div className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className={`flex items-center space-x-2 ${theme === 'dark' ? 'text-white/70' : 'text-gray-600'}`}>
-                        <div className="w-2 h-2 bg-versory-green rounded-full"></div>
+                        <div className="w-2 h-2 bg-versiory-green rounded-full"></div>
                         <span className="text-sm">{feature}</span>
                       </div>
                     ))}
@@ -162,9 +162,9 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="text-center backdrop-blur-sm border border-versory-azure/60 rounded-2xl p-6"
+                className="text-center backdrop-blur-sm border border-versiory-azure/60 rounded-2xl p-6"
               >
-                <div className={`w-12 h-12 bg-gradient-to-r from-versory-green to-versory-azure rounded-xl flex items-center justify-center mx-auto mb-4`}>
+                <div className={`w-12 h-12 bg-gradient-to-r from-versiory-green to-versiory-azure rounded-xl flex items-center justify-center mx-auto mb-4`}>
                   <stat.icon size={24} className="text-white" />
                 </div>
                 <p className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>

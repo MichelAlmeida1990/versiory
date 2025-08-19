@@ -53,7 +53,7 @@ const OptimizedImage = ({
     >
       {/* Placeholder */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-versory-blue/20 to-versory-azure/20"
+        className="absolute inset-0 bg-gradient-to-br from-versiory-blue/20 to-versiory-azure/20"
         style={{
           backgroundImage: `url(${placeholder})`,
           backgroundSize: 'cover',
@@ -81,7 +81,7 @@ const OptimizedImage = ({
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-8 h-8 border-2 border-versory-azure border-t-transparent rounded-full"
+            className="w-8 h-8 border-2 border-versiory-azure border-t-transparent rounded-full"
           />
         </div>
       )}
