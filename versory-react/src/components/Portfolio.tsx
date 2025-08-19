@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Github, Star, Users, Smartphone, Monitor, ShoppingCart, Building, Camera } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import Image from 'next/image';
 
 interface Project {
   id: number;
@@ -272,9 +273,11 @@ const Portfolio = () => {
                         <div className="relative">
                           {project.mockup ? (
                             <div className="relative group">
-                              <img 
+                              <Image 
                                 src={project.mockup} 
                                 alt={`Mockup ${project.title}`}
+                                width={800}
+                                height={600}
                                 className="w-full h-auto"
                               />
                               
@@ -288,10 +291,11 @@ const Portfolio = () => {
                                 transition={{ duration: 0.3 }}
                                 className="w-full h-full"
                               >
-                                <img 
+                                <Image 
                                   src={project.image} 
                                   alt={project.title}
-                                  className="w-full h-full object-cover"
+                                  fill
+                                  className="object-cover"
                                 />
                               </motion.div>
                             </div>

@@ -142,7 +142,7 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
+            {values.map((value) => (
               <div key={value.letter} className="relative">
                 <motion.div
                   whileHover={{ scale: 1.05, y: -5 }}

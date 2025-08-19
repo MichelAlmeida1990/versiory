@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import Image from 'next/image';
 
 const Navbar = () => {
   const { theme } = useTheme();
@@ -38,9 +39,11 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-3"
           >
-            <img 
+            <Image 
               src="/images/logo.png" 
               alt="Versory Logo" 
+              width={64}
+              height={64}
               className="w-16 h-16 object-contain"
             />
             <motion.span 

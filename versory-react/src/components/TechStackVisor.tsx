@@ -37,23 +37,21 @@ const getAnimationProps = (type: string, index: number) => {
       return {
         animate: {
           rotate: [0, 360],
-          scale: [1, 1.1, 1],
         },
         transition: {
-          rotate: { duration: 3, repeat: Infinity, ease: "linear", delay: baseDelay },
-          scale: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: baseDelay }
+          duration: 3,
+          repeat: Infinity,
+          delay: baseDelay
         }
       };
     case 'pulse':
       return {
         animate: {
           scale: [1, 1.2, 1],
-          opacity: [0.8, 1, 0.8],
         },
         transition: {
           duration: 2,
           repeat: Infinity,
-          ease: "easeInOut",
           delay: baseDelay
         }
       };
@@ -61,12 +59,10 @@ const getAnimationProps = (type: string, index: number) => {
       return {
         animate: {
           y: [0, -10, 0],
-          rotate: [0, 5, -5, 0],
         },
         transition: {
           duration: 3,
           repeat: Infinity,
-          ease: "easeInOut",
           delay: baseDelay
         }
       };
@@ -74,12 +70,10 @@ const getAnimationProps = (type: string, index: number) => {
       return {
         animate: {
           y: [0, -15, 0],
-          scale: [1, 1.1, 1],
         },
         transition: {
           duration: 1.5,
           repeat: Infinity,
-          ease: "easeInOut",
           delay: baseDelay
         }
       };
@@ -87,31 +81,21 @@ const getAnimationProps = (type: string, index: number) => {
       return {
         animate: {
           x: [0, -5, 5, -5, 0],
-          rotate: [0, -2, 2, -2, 0],
         },
         transition: {
           duration: 2,
           repeat: Infinity,
-          ease: "easeInOut",
           delay: baseDelay
         }
       };
     case 'glow':
       return {
         animate: {
-          boxShadow: [
-            `0 0 10px currentColor`,
-            `0 0 20px currentColor`,
-            `0 0 30px currentColor`,
-            `0 0 20px currentColor`,
-            `0 0 10px currentColor`
-          ],
           scale: [1, 1.05, 1],
         },
         transition: {
           duration: 2.5,
           repeat: Infinity,
-          ease: "easeInOut",
           delay: baseDelay
         }
       };

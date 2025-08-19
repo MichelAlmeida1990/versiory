@@ -67,7 +67,7 @@ export const ScrollReveal = ({
       transition={{
         duration,
         delay,
-        ease: [0.17, 0.55, 0.55, 1]
+        ease: "easeOut"
       }}
     >
       {children}
@@ -146,11 +146,7 @@ export const StaggerContainer = ({
       opacity: 1,
       y: 0,
       x: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.17, 0.55, 0.55, 1]
-      }
+      scale: 1
     }
   };
 
@@ -164,11 +160,18 @@ export const StaggerContainer = ({
     >
       {Array.isArray(children) ? 
         children.map((child, index) => (
-          <motion.div key={index} variants={itemVariants}>
+          <motion.div 
+            key={index} 
+            variants={itemVariants}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             {child}
           </motion.div>
         )) : 
-        <motion.div variants={itemVariants}>
+        <motion.div 
+          variants={itemVariants}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           {children}
         </motion.div>
       }

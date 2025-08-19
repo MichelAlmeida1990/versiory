@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface OptimizedImageProps {
   src: string;
@@ -62,14 +63,15 @@ const OptimizedImage = ({
       
       {/* Actual Image */}
       {isInView && (
-        <img
+        <Image
           src={src}
           alt={alt}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
+          fill
+          className={`object-cover transition-opacity duration-300 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setIsLoaded(true)}
-          loading={priority ? 'eager' : 'lazy'}
+          priority={priority}
         />
       )}
       

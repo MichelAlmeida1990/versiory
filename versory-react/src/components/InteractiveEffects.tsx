@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Sparkles, Zap, Star, Heart } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+
 
 const InteractiveEffects = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

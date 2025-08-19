@@ -37,12 +37,7 @@ const ScrollReveal = ({
     const baseVariants = {
       hidden: { opacity: 0 },
       visible: { 
-        opacity: 1,
-        transition: { 
-          duration,
-          delay,
-          ease: "easeOut"
-        }
+        opacity: 1
       }
     };
 
@@ -52,12 +47,7 @@ const ScrollReveal = ({
           hidden: { opacity: 0, y: 50 },
           visible: { 
             opacity: 1, 
-            y: 0,
-            transition: { 
-              duration,
-              delay,
-              ease: "easeOut"
-            }
+            y: 0
           }
         };
       case 'down':
@@ -65,12 +55,7 @@ const ScrollReveal = ({
           hidden: { opacity: 0, y: -50 },
           visible: { 
             opacity: 1, 
-            y: 0,
-            transition: { 
-              duration,
-              delay,
-              ease: "easeOut"
-            }
+            y: 0
           }
         };
       case 'left':
@@ -78,12 +63,7 @@ const ScrollReveal = ({
           hidden: { opacity: 0, x: 50 },
           visible: { 
             opacity: 1, 
-            x: 0,
-            transition: { 
-              duration,
-              delay,
-              ease: "easeOut"
-            }
+            x: 0
           }
         };
       case 'right':
@@ -91,12 +71,7 @@ const ScrollReveal = ({
           hidden: { opacity: 0, x: -50 },
           visible: { 
             opacity: 1, 
-            x: 0,
-            transition: { 
-              duration,
-              delay,
-              ease: "easeOut"
-            }
+            x: 0
           }
         };
       case 'scale':
@@ -104,12 +79,7 @@ const ScrollReveal = ({
           hidden: { opacity: 0, scale: 0.8 },
           visible: { 
             opacity: 1, 
-            scale: 1,
-            transition: { 
-              duration,
-              delay,
-              ease: "easeOut"
-            }
+            scale: 1
           }
         };
       case 'fade':
@@ -124,6 +94,7 @@ const ScrollReveal = ({
       initial="hidden"
       animate={controls}
       variants={getVariants()}
+      transition={{ duration, delay, ease: "easeOut" }}
       className={className}
     >
       {children}

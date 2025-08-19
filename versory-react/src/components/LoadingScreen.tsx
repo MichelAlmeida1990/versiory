@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import Image from 'next/image';
+
 
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,9 +57,11 @@ const LoadingScreen = () => {
               }}
               className="w-24 h-24 mx-auto mb-4"
             >
-              <img 
+              <Image 
                 src="/images/logo.png" 
                 alt="Versory Logo" 
+                width={96}
+                height={96}
                 className="w-full h-full object-contain"
               />
             </motion.div>
