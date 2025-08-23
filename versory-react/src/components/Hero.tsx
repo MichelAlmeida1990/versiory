@@ -11,6 +11,8 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [isSelected, setIsSelected] = useState(false);
+  const [selectionProgress, setSelectionProgress] = useState(0);
   
   const companyName = "VERSIORY";
   const description = "Desenvolvimento web moderno e inovador";
@@ -33,6 +35,26 @@ const Hero = () => {
       return () => clearTimeout(timer);
     }
   }, [isVisible, charIndex, textIndex, companyName.length]);
+
+  // Selection animation effect
+  useEffect(() => {
+    if (isSelected) {
+      const timer = setInterval(() => {
+        setSelectionProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(timer);
+            setTimeout(() => {
+              setIsSelected(false);
+              setSelectionProgress(0);
+            }, 500);
+            return 100;
+          }
+          return prev + 5;
+        });
+      }, 50);
+      return () => clearInterval(timer);
+    }
+  }, [isSelected]);
   
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
@@ -57,8 +79,25 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <motion.h1
-              className="text-6xl md:text-8xl font-extrabold leading-tight mb-6"
+              className="text-6xl md:text-8xl font-extrabold leading-tight mb-6 relative cursor-pointer select-none"
+              onMouseEnter={() => setIsSelected(true)}
+              onMouseLeave={() => {
+                if (!isSelected) {
+                  setIsSelected(false);
+                  setSelectionProgress(0);
+                }
+              }}
             >
+              {/* Selection background */}
+              {isSelected && (
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${selectionProgress}%` }}
+                  className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg"
+                  style={{ zIndex: -1 }}
+                />
+              )}
+              
                {companyName.split('').map((letter, index) => (
                  <motion.span
                    key={index}
@@ -88,11 +127,11 @@ const Hero = () => {
                        delay: index * 0.1 + 1.5
                      }
                    }}
-                                       className="inline-block bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent"
-                    style={{
-                      animationDelay: `${index * 0.1}s`,
-                      transformStyle: "preserve-3d"
-                    }}
+                   className={`inline-block ${isSelected ? 'text-white' : 'bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent'}`}
+                   style={{
+                     animationDelay: `${index * 0.1}s`,
+                     transformStyle: "preserve-3d"
+                   }}
                  >
                    {letter}
                  </motion.span>
