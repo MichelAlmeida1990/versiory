@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, Play, Zap, Star, Heart } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { ChevronDown, Play, Zap, Star, Heart, Volume2, VolumeX } from 'lucide-react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
 
@@ -15,9 +15,26 @@ const Hero = () => {
   const [selectionProgress, setSelectionProgress] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   const companyName = "VERSIORY";
   const description = "Desenvolvimento web moderno e inovador";
+  
+  // Detect mobile device
+  const isMobile = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  }, []);
+  
+  const toggleMute = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  }, []);
   
   useEffect(() => {
     setIsVisible(true);
@@ -32,13 +49,13 @@ const Hero = () => {
           setTextIndex(1);
           setCharIndex(0);
         }
-      }, 150);
+      }, isMobile ? 200 : 150); // Slower on mobile for better performance
       
       return () => clearTimeout(timer);
     }
-  }, [isVisible, charIndex, textIndex, companyName.length]);
+  }, [isVisible, charIndex, textIndex, companyName.length, isMobile]);
 
-  // Selection animation effect
+  // Selection animation effect - Reduced frequency on mobile
   useEffect(() => {
     if (isSelected) {
       const timer = setInterval(() => {
@@ -51,12 +68,12 @@ const Hero = () => {
             }, 500);
             return 100;
           }
-          return prev + 5;
+          return prev + (isMobile ? 10 : 5); // Faster on mobile to reduce duration
         });
-      }, 50);
+      }, isMobile ? 30 : 50); // Faster interval on mobile
       return () => clearInterval(timer);
     }
-  }, [isSelected]);
+  }, [isSelected, isMobile]);
   
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
@@ -66,34 +83,38 @@ const Hero = () => {
           
           {/* Left Column - Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial={{ opacity: 0, x: isMobile ? -50 : -100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : (isMobile ? -50 : -100) }}
+            transition={{ duration: isMobile ? 0.6 : 0.8, delay: 0.3 }}
             className="text-left"
           >
-            {/* Floating Icons */}
+            {/* Floating Icons - Reduced animations on mobile */}
             <div className="relative mb-8">
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-4 text-versiory-yellow"
-              >
-                <Zap size={24} />
-              </motion.div>
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -top-2 right-20 text-versiory-pink"
-              >
-                <Star size={20} />
-              </motion.div>
-              <motion.div
-                animate={{ y: [-5, 15, -5] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute top-8 -right-2 text-versiory-azure"
-              >
-                <Heart size={18} />
-              </motion.div>
+              {!isMobile && (
+                <>
+                  <motion.div
+                    animate={{ y: [-10, 10, -10] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-4 -left-4 text-versiory-yellow"
+                  >
+                    <Zap size={24} />
+                  </motion.div>
+                  <motion.div
+                    animate={{ y: [10, -10, 10] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute -top-2 right-20 text-versiory-pink"
+                  >
+                    <Star size={20} />
+                  </motion.div>
+                  <motion.div
+                    animate={{ y: [-5, 15, -5] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    className="absolute top-8 -right-2 text-versiory-azure"
+                  >
+                    <Heart size={18} />
+                  </motion.div>
+                </>
+              )}
             </div>
 
             {/* Company Name */}
@@ -262,9 +283,9 @@ const Hero = () => {
 
           {/* Right Column - Video */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 100 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, x: isMobile ? 50 : 100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : (isMobile ? 50 : 100) }}
+            transition={{ duration: isMobile ? 0.6 : 0.8, delay: 0.5 }}
             className="relative"
           >
             {/* Video Container */}
@@ -272,10 +293,13 @@ const Hero = () => {
               <div className="relative aspect-video rounded-xl overflow-hidden">
                 {!videoError ? (
                   <video
+                    ref={videoRef}
                     className="w-full h-full object-cover"
                     autoPlay
                     loop
                     playsInline
+                    muted={isMuted}
+                    preload={isMobile ? "metadata" : "auto"}
                     onPlay={() => setIsVideoPlaying(true)}
                     onPause={() => setIsVideoPlaying(false)}
                     onError={(e) => {
@@ -300,25 +324,46 @@ const Hero = () => {
                 {/* Video Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                 
+                {/* Audio Control Button */}
+                <motion.button
+                  onClick={toggleMute}
+                  className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-black/70 transition-all duration-300 z-10"
+                  whileHover={!isMobile ? { scale: 1.1 } : {}}
+                  whileTap={{ scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.0 }}
+                >
+                  {isMuted ? (
+                    <VolumeX size={20} className="text-white" />
+                  ) : (
+                    <Volume2 size={20} className="text-white" />
+                  )}
+                </motion.button>
+                
 
               </div>
               
-              {/* Floating Elements around Video */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-4 -right-4 w-8 h-8 border-2 border-versiory-green rounded-full"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-4 -left-4 w-6 h-6 border-2 border-versiory-azure rounded-full"
-              />
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 -left-2 w-3 h-3 bg-versiory-pink rounded-full"
-              />
+              {/* Floating Elements around Video - Reduced on mobile */}
+              {!isMobile && (
+                <>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute -top-4 -right-4 w-8 h-8 border-2 border-versiory-green rounded-full"
+                  />
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute -bottom-4 -left-4 w-6 h-6 border-2 border-versiory-azure rounded-full"
+                  />
+                  <motion.div
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-4 -left-2 w-3 h-3 bg-versiory-pink rounded-full"
+                  />
+                </>
+              )}
             </div>
             
             {/* Stats Cards */}
