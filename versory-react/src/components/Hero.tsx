@@ -276,7 +276,6 @@ const Hero = () => {
                     autoPlay
                     loop
                     playsInline
-                    muted
                     onPlay={() => setIsVideoPlaying(true)}
                     onPause={() => setIsVideoPlaying(false)}
                     onError={(e) => {
