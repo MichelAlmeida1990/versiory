@@ -15,24 +15,37 @@ const Hero = () => {
   const [selectionProgress, setSelectionProgress] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // Start muted to allow autoplay
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   
   const companyName = "VERSIORY";
   const description = "Desenvolvimento web moderno e inovador";
   
-  // Detect mobile device
-  const isMobile = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < 768;
-    }
-    return false;
+  // Detect mobile device - Fixed hydration issue
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
   const toggleMute = useCallback(() => {
     if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
+      const newMutedState = !videoRef.current.muted;
+      videoRef.current.muted = newMutedState;
+      setIsMuted(newMutedState);
+      
+      // If unmuting, try to play the video
+      if (!newMutedState && videoRef.current.paused) {
+        videoRef.current.play().catch(console.error);
+      }
     }
   }, []);
   
@@ -40,8 +53,9 @@ const Hero = () => {
     setIsVisible(true);
   }, []);
   
+  // Simplified text animation for mobile
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && !isMobile) {
       const timer = setTimeout(() => {
         if (charIndex < companyName.length) {
           setCharIndex(charIndex + 1);
@@ -49,15 +63,19 @@ const Hero = () => {
           setTextIndex(1);
           setCharIndex(0);
         }
-      }, isMobile ? 200 : 150); // Slower on mobile for better performance
+      }, 150);
       
       return () => clearTimeout(timer);
+    } else if (isVisible && isMobile) {
+      // On mobile, show text immediately without animation
+      setCharIndex(companyName.length);
+      setTextIndex(1);
     }
   }, [isVisible, charIndex, textIndex, companyName.length, isMobile]);
 
-  // Selection animation effect - Reduced frequency on mobile
+  // Selection animation effect - Disabled on mobile
   useEffect(() => {
-    if (isSelected) {
+    if (isSelected && !isMobile) {
       const timer = setInterval(() => {
         setSelectionProgress(prev => {
           if (prev >= 100) {
@@ -68,12 +86,35 @@ const Hero = () => {
             }, 500);
             return 100;
           }
-          return prev + (isMobile ? 10 : 5); // Faster on mobile to reduce duration
+          return prev + 5;
         });
-      }, isMobile ? 30 : 50); // Faster interval on mobile
+      }, 50);
       return () => clearInterval(timer);
     }
   }, [isSelected, isMobile]);
+  
+  // Force video load if needed - Only on desktop
+  useEffect(() => {
+    if (!isMobile && videoRef.current && !videoLoaded && !videoError) {
+      const timer = setTimeout(() => {
+        if (videoRef.current && !videoLoaded) {
+          videoRef.current.load();
+        }
+      }, 2000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [videoLoaded, videoError, isMobile]);
+  
+  // Ensure video is properly configured when loaded
+  useEffect(() => {
+    if (videoRef.current && videoLoaded) {
+      videoRef.current.muted = isMuted;
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(console.error);
+      }
+    }
+  }, [videoLoaded, isMuted]);
   
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
@@ -83,9 +124,9 @@ const Hero = () => {
           
           {/* Left Column - Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: isMobile ? -50 : -100 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : (isMobile ? -50 : -100) }}
-            transition={{ duration: isMobile ? 0.6 : 0.8, delay: 0.3 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : (isMobile ? 0 : -100) }}
+            transition={{ duration: isMobile ? 0.3 : 0.8, delay: isMobile ? 0 : 0.3 }}
             className="text-left"
           >
             {/* Floating Icons - Reduced animations on mobile */}
@@ -138,44 +179,44 @@ const Hero = () => {
                 />
               )}
               
-              {companyName.split('').map((letter, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 50, scale: 0.5 }}
-                  animate={{ 
-                    opacity: charIndex > index ? 1 : 0,
-                    y: charIndex > index ? [0, -5, 0] : 50,
-                    scale: charIndex > index ? 1 : 0.5,
-                    rotateY: charIndex > index ? [0, 5, 0] : 0
-                  }}
-                  transition={{ 
-                    duration: 0.3,
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 10,
-                    y: {
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      delay: index * 0.1 + 1
-                    },
-                    rotateY: {
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      delay: index * 0.1 + 1.5
-                    }
-                  }}
-                  className={`inline-block ${isSelected ? 'text-white' : 'bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent'}`}
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    transformStyle: "preserve-3d"
-                  }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
+                             {companyName.split('').map((letter, index) => (
+                 <motion.span
+                   key={index}
+                   initial={{ opacity: 0, y: isMobile ? 0 : 50, scale: isMobile ? 1 : 0.5 }}
+                   animate={{ 
+                     opacity: charIndex > index ? 1 : 0,
+                     y: charIndex > index ? (isMobile ? 0 : [0, -5, 0]) : (isMobile ? 0 : 50),
+                     scale: charIndex > index ? 1 : (isMobile ? 1 : 0.5),
+                     rotateY: isMobile ? 0 : (charIndex > index ? [0, 5, 0] : 0)
+                   }}
+                   transition={{ 
+                     duration: isMobile ? 0.1 : 0.3,
+                     delay: isMobile ? 0 : index * 0.1,
+                     type: "spring",
+                     stiffness: isMobile ? 100 : 200,
+                     damping: isMobile ? 5 : 10,
+                     y: isMobile ? {} : {
+                       duration: 2,
+                       repeat: Infinity,
+                       repeatType: "reverse",
+                       delay: index * 0.1 + 1
+                     },
+                     rotateY: isMobile ? {} : {
+                       duration: 3,
+                       repeat: Infinity,
+                       repeatType: "reverse",
+                       delay: index * 0.1 + 1.5
+                     }
+                   }}
+                   className={`inline-block ${isSelected ? 'text-white' : 'bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent'}`}
+                   style={{
+                     animationDelay: isMobile ? '0s' : `${index * 0.1}s`,
+                     transformStyle: "preserve-3d"
+                   }}
+                 >
+                   {letter}
+                 </motion.span>
+               ))}
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
@@ -195,30 +236,34 @@ const Hero = () => {
               <motion.p
                 className={`text-2xl md:text-3xl mb-8 max-w-2xl font-bold whitespace-nowrap ${theme === 'dark' ? 'text-white/90' : 'text-blue-400'}`}
               >
-                {description.split('').map((letter, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ 
-                      opacity: textIndex === 1 ? 1 : 0,
-                      y: textIndex === 1 ? [0, -3, 0] : 20
-                    }}
-                    transition={{ 
-                      duration: 0.3,
-                      delay: 0.8 + (index * 0.05),
-                      y: {
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 1.2 + (index * 0.05)
-                      }
-                    }}
-                    className="inline-block"
-                    style={{ whiteSpace: 'pre' }}
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
+                {isMobile ? (
+                  <span>{description}</span>
+                ) : (
+                  description.split('').map((letter, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ 
+                        opacity: textIndex === 1 ? 1 : 0,
+                        y: textIndex === 1 ? [0, -3, 0] : 20
+                      }}
+                      transition={{ 
+                        duration: 0.3,
+                        delay: 0.8 + (index * 0.05),
+                        y: {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          delay: 1.2 + (index * 0.05)
+                        }
+                      }}
+                      className="inline-block"
+                      style={{ whiteSpace: 'pre' }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))
+                )}
               </motion.p>
             </motion.div>
 
@@ -283,9 +328,9 @@ const Hero = () => {
 
           {/* Right Column - Video */}
           <motion.div
-            initial={{ opacity: 0, x: isMobile ? 50 : 100 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : (isMobile ? 50 : 100) }}
-            transition={{ duration: isMobile ? 0.6 : 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 100 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : (isMobile ? 0 : 100) }}
+            transition={{ duration: isMobile ? 0.3 : 0.8, delay: isMobile ? 0 : 0.5 }}
             className="relative"
           >
             {/* Video Container */}
@@ -299,15 +344,24 @@ const Hero = () => {
                     loop
                     playsInline
                     muted={isMuted}
-                    preload={isMobile ? "metadata" : "auto"}
+                    preload="metadata"
                     onPlay={() => setIsVideoPlaying(true)}
                     onPause={() => setIsVideoPlaying(false)}
+                    onLoadedData={() => {
+                      setVideoLoaded(true);
+                      console.log('Vídeo carregado com sucesso');
+                    }}
+                    onCanPlay={() => {
+                      console.log('Vídeo pode ser reproduzido');
+                      if (videoRef.current && videoRef.current.paused) {
+                        videoRef.current.play().catch(console.error);
+                      }
+                    }}
                     onError={(e) => {
                       console.error('Erro no vídeo:', e);
                       setVideoError(true);
                     }}
                     onLoadStart={() => console.log('Vídeo começando a carregar')}
-                    onCanPlay={() => console.log('Vídeo pode ser reproduzido')}
                   >
                     <source src="/images/WhatsApp Video 2025-08-23 at 13.55.43.mp4" type="video/mp4" />
                     Seu navegador não suporta vídeos.
@@ -317,12 +371,33 @@ const Hero = () => {
                     <div className="text-center">
                       <Play size={64} className="text-versiory-azure mx-auto mb-4" />
                       <p className="text-versiory-azure font-semibold">Vídeo não disponível</p>
+                      <button 
+                        onClick={() => {
+                          setVideoError(false);
+                          if (videoRef.current) {
+                            videoRef.current.load();
+                          }
+                        }}
+                        className="mt-4 px-4 py-2 bg-versiory-azure text-white rounded-lg hover:bg-versiory-azure/80 transition-colors"
+                      >
+                        Tentar novamente
+                      </button>
                     </div>
                   </div>
                 )}
                 
                 {/* Video Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                
+                {/* Loading Indicator */}
+                {!videoLoaded && !videoError && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <div className="text-center">
+                      <div className="w-8 h-8 border-2 border-versiory-azure border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                      <p className="text-white text-sm">Carregando vídeo...</p>
+                    </div>
+                  </div>
+                )}
                 
                 {/* Audio Control Button */}
                 <motion.button
