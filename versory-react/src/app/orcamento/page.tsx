@@ -109,6 +109,20 @@ const OrcamentoPage = () => {
       deliveryTime: "60-90 dias",
       color: "from-versiory-brown to-versiory-azure",
       gradient: "bg-gradient-to-br from-versiory-brown to-versiory-azure"
+    },
+    {
+      id: 7,
+      title: "Site Profissional",
+      description: "Sites profissionais para empresas e profissionais liberais com design moderno.",
+      icon: Globe,
+      category: "web",
+      features: ["Design Responsivo", "SEO Otimizado", "Formulário de Contato", "Galeria", "Blog", "Integração com Redes Sociais"],
+      basePrice: 2500,
+      marketPrice: 8000,
+      ourPrice: 2000,
+      deliveryTime: "15-20 dias",
+      color: "from-versiory-green to-versiory-pink",
+      gradient: "bg-gradient-to-br from-versiory-green to-versiory-pink"
     }
   ];
 
@@ -215,23 +229,23 @@ const OrcamentoPage = () => {
                 )}
               </div>
 
-              <div className="border-t border-versiory-azure/20 pt-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-white/60">Preço VERSIORY:</span>
-                  <span className="text-lg font-bold text-versiory-green">{formatPrice(service.ourPrice)}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-white/40">Mercado:</span>
-                  <span className="text-sm line-through text-white/40">
-                    {formatPrice(service.marketPrice)}
-                  </span>
-                </div>
-                <div className="mt-2 text-center">
-                  <span className="text-xs bg-versiory-green/20 text-versiory-green px-2 py-1 rounded-full">
-                    Economia de {calculateSavings(service.marketPrice, service.ourPrice)}%
-                  </span>
-                </div>
-              </div>
+                             <div className="border-t border-versiory-azure/20 pt-4">
+                 <div className="flex items-center justify-between mb-2">
+                   <span className="text-sm text-white/60">A partir de:</span>
+                   <span className="text-lg font-bold text-versiory-green">{formatPrice(service.ourPrice)}</span>
+                 </div>
+                 <div className="flex items-center justify-between">
+                   <span className="text-xs text-white/40">Mercado:</span>
+                   <span className="text-sm line-through text-white/40">
+                     {formatPrice(service.marketPrice)}
+                   </span>
+                 </div>
+                 <div className="mt-2 text-center">
+                   <span className="text-xs bg-versiory-green/20 text-versiory-green px-2 py-1 rounded-full">
+                     Economia de {calculateSavings(service.marketPrice, service.ourPrice)}%
+                   </span>
+                 </div>
+               </div>
 
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="w-8 h-8 bg-versiory-green rounded-full flex items-center justify-center">
@@ -497,15 +511,15 @@ const OrcamentoPage = () => {
                     Detalhes do Projeto
                   </h3>
                   <div className="space-y-4">
-                    <div className="p-4 rounded-lg bg-versiory-blue/10">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-white">Preço VERSIORY</span>
-                        <span className="text-2xl font-bold text-versiory-green">{formatPrice(selectedService.ourPrice)}</span>
-                      </div>
-                      <div className="text-sm text-versiory-green">
-                        Economia de {calculateSavings(selectedService.marketPrice, selectedService.ourPrice)}% em relação ao mercado
-                      </div>
-                    </div>
+                                         <div className="p-4 rounded-lg bg-versiory-blue/10">
+                       <div className="flex items-center justify-between mb-2">
+                         <span className="font-semibold text-white">A partir de</span>
+                         <span className="text-2xl font-bold text-versiory-green">{formatPrice(selectedService.ourPrice)}</span>
+                       </div>
+                       <div className="text-sm text-versiory-green">
+                         Economia de {calculateSavings(selectedService.marketPrice, selectedService.ourPrice)}% em relação ao mercado
+                       </div>
+                     </div>
 
                     <div className="p-4 rounded-lg bg-versiory-pink/10">
                       <div className="flex items-center justify-between mb-2">
