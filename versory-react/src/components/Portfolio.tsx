@@ -366,17 +366,14 @@ const Portfolio = () => {
 
                       {/* Botões */}
                       <div className="flex flex-col sm:flex-row gap-4">
-                        <motion.a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <motion.div
                           whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(204, 255, 0, 0.3)" }}
                           whileTap={{ scale: 0.95 }}
                           className="bg-versiory-green text-black px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
                         >
                           <ExternalLink size={20} />
                           <span>Ver Demo</span>
-                        </motion.a>
+                        </motion.div>
                         <motion.a
                           href={project.githubUrl}
                           target="_blank"
@@ -384,6 +381,7 @@ const Portfolio = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           className="border-2 border-versiory-azure text-versiory-azure px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-versiory-azure hover:text-black transition-all duration-300"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <Github size={20} />
                           <span>Código</span>
