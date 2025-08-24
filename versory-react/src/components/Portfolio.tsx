@@ -242,98 +242,94 @@ const Portfolio = () => {
             <AnimatePresence mode="wait">
               {filteredProjects.map((project, index) => (
                 index === currentProject && (
-                  <motion.div
+                  <motion.a
                     key={project.id}
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -100 }}
                     transition={{ duration: 0.5 }}
-                    className="grid lg:grid-cols-2 gap-12 items-stretch"
+                    className="grid lg:grid-cols-2 gap-12 items-stretch cursor-pointer group"
+                    whileHover={{ scale: 1.02 }}
                   >
                     {/* Mockup do Projeto */}
-                    <motion.a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative group block cursor-pointer"
-                      whileHover={{ scale: 1.02 }}
+                    <motion.div
+                      className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-versiory-blue/10 to-versiory-azure/10 backdrop-blur-sm border border-versiory-azure/60 shadow-2xl h-full"
+                      style={{
+                        background: `linear-gradient(135deg, 
+                          ${theme === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.1)'} 0%, 
+                          rgba(0, 255, 255, 0.1) 50%, 
+                          rgba(204, 255, 0, 0.1) 100%)`,
+                        boxShadow: `0 25px 50px -12px ${theme === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.1)'}`
+                      }}
                     >
-                      <motion.div
-                        className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-versiory-blue/10 to-versiory-azure/10 backdrop-blur-sm border border-versiory-azure/60 shadow-2xl h-full"
-                        style={{
-                          background: `linear-gradient(135deg, 
-                            ${theme === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.1)'} 0%, 
-                            rgba(0, 255, 255, 0.1) 50%, 
-                            rgba(204, 255, 0, 0.1) 100%)`,
-                          boxShadow: `0 25px 50px -12px ${theme === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.1)'}`
-                        }}
-                      >
-                        {/* Efeito de brilho no card */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        
-                        {/* Mockup Principal */}
-                        <div className="relative">
-                          {project.mockup ? (
-                            <div className="relative group aspect-video overflow-hidden rounded-xl">
+                      {/* Efeito de brilho no card */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Mockup Principal */}
+                      <div className="relative">
+                        {project.mockup ? (
+                          <div className="relative group aspect-video overflow-hidden rounded-xl">
+                            <Image 
+                              src={project.mockup} 
+                              alt={`Mockup ${project.title}`}
+                              fill
+                              className="object-cover w-full h-full"
+                            />
+                            
+                            {/* Efeito de brilho */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          </div>
+                        ) : (
+                          <div className="aspect-video bg-gradient-to-br from-versiory-black/50 to-versiory-blue/20 flex items-center justify-center overflow-hidden rounded-xl">
+                            <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.3 }}
+                              className="w-full h-full relative"
+                            >
                               <Image 
-                                src={project.mockup} 
-                                alt={`Mockup ${project.title}`}
+                                src={project.image} 
+                                alt={project.title}
                                 fill
-                                className="object-cover w-full h-full"
+                                className="object-cover"
                               />
-                              
-                              {/* Efeito de brilho */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            </div>
-                          ) : (
-                            <div className="aspect-video bg-gradient-to-br from-versiory-black/50 to-versiory-blue/20 flex items-center justify-center overflow-hidden rounded-xl">
-                              <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                                className="w-full h-full relative"
-                              >
-                                <Image 
-                                  src={project.image} 
-                                  alt={project.title}
-                                  fill
-                                  className="object-cover"
-                                />
-                              </motion.div>
-                            </div>
-                          )}
-                        </div>
-                        
-                        {/* Overlay com Stats */}
-                        {project.stats && (
-                          <div className="absolute top-4 right-4 bg-versiory-black/80 backdrop-blur-sm rounded-lg p-3">
-                            <div className="flex items-center space-x-2 text-white/90 text-sm">
-                              <Users size={16} />
-                              <span>{project.stats.users}</span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-white/90 text-sm">
-                              <Star size={16} className="text-versiory-green" />
-                              <span>{project.stats.rating}</span>
-                            </div>
+                            </motion.div>
                           </div>
                         )}
-
-                        {/* Badge Featured */}
-                        {project.featured && (
-                          <div className="absolute top-4 left-4 bg-gradient-to-r from-versiory-green to-versiory-azure text-black px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1 shadow-lg animate-pulse">
-                            <Star size={12} />
-                            <span>Destaque</span>
+                      </div>
+                      
+                      {/* Overlay com Stats */}
+                      {project.stats && (
+                        <div className="absolute top-4 right-4 bg-versiory-black/80 backdrop-blur-sm rounded-lg p-3">
+                          <div className="flex items-center space-x-2 text-white/90 text-sm">
+                            <Users size={16} />
+                            <span>{project.stats.users}</span>
                           </div>
-                        )}
-
-                        {/* Badge Categoria */}
-                        <div className="absolute bottom-4 left-4 bg-versiory-black/80 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
-                          {project.icon}
-                          <span className="text-white/90 text-sm font-medium">
-                            {categories.find(cat => cat.key === project.category)?.label}
-                          </span>
+                          <div className="flex items-center space-x-2 text-white/90 text-sm">
+                            <Star size={16} className="text-versiory-green" />
+                            <span>{project.stats.rating}</span>
+                          </div>
                         </div>
-                      </motion.div>
-                    </motion.a>
+                      )}
+
+                      {/* Badge Featured */}
+                      {project.featured && (
+                        <div className="absolute top-4 left-4 bg-gradient-to-r from-versiory-green to-versiory-azure text-black px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1 shadow-lg animate-pulse">
+                          <Star size={12} />
+                          <span>Destaque</span>
+                        </div>
+                      )}
+
+                      {/* Badge Categoria */}
+                      <div className="absolute bottom-4 left-4 bg-versiory-black/80 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
+                        {project.icon}
+                        <span className="text-white/90 text-sm font-medium">
+                          {categories.find(cat => cat.key === project.category)?.label}
+                        </span>
+                      </div>
+                    </motion.div>
 
                     {/* Informações do Projeto */}
                     <div className="space-y-6">
@@ -394,7 +390,7 @@ const Portfolio = () => {
                         </motion.a>
                       </div>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 )
               ))}
             </AnimatePresence>
