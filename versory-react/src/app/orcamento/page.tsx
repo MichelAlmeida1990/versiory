@@ -10,7 +10,7 @@ interface Service {
   id: number;
   title: string;
   description: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string; size?: number }>;
   category: 'web' | 'mobile' | 'design' | 'system';
   features: string[];
   basePrice: number;
