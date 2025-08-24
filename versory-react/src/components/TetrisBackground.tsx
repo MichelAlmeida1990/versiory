@@ -98,7 +98,7 @@ const TetrisBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isActive, setIsActive] = useState(true);
   const [isClient, setIsClient] = useState(false);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     setIsClient(true);
