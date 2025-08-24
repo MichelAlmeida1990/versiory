@@ -344,11 +344,11 @@ const OrcamentoPage = () => {
                     <span className="text-white/80 font-medium">Programa de indicação</span>
                   </div>
                 </div>
-                <div className="mt-4 p-3 bg-versiory-green/10 rounded-lg border border-versiory-green/20">
-                  <p className="text-sm text-versiory-green font-semibold">
-                    🎯 <span className="font-bold">Indique um cliente e ganhe 50% de desconto</span> na próxima mensalidade!
-                  </p>
-                </div>
+                                 <div className="mt-4 p-3 bg-versiory-green/10 rounded-lg border border-versiory-green/20">
+                   <p className="text-sm text-versiory-green font-semibold">
+                     🎯 <span className="font-bold">Indique um cliente e ganhe 10% de desconto</span> no próximo projeto!
+                   </p>
+                 </div>
              </div>
            </div>
         </motion.div>

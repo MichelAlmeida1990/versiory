@@ -251,9 +251,14 @@ const Portfolio = () => {
                     className="grid lg:grid-cols-2 gap-12 items-stretch"
                   >
                     {/* Mockup do Projeto */}
-                    <div className="relative group">
+                    <motion.a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative group block cursor-pointer"
+                      whileHover={{ scale: 1.02 }}
+                    >
                       <motion.div
-                        whileHover={{ scale: 1.02 }}
                         className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-versiory-blue/10 to-versiory-azure/10 backdrop-blur-sm border border-versiory-azure/60 shadow-2xl h-full"
                         style={{
                           background: `linear-gradient(135deg, 
@@ -328,7 +333,7 @@ const Portfolio = () => {
                           </span>
                         </div>
                       </motion.div>
-                    </div>
+                    </motion.a>
 
                     {/* Informações do Projeto */}
                     <div className="space-y-6">
