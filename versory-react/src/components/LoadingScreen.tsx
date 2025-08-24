@@ -1,46 +1,61 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-
 const LoadingScreen = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isClient, setIsClient] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
 
   useEffect(() => {
-    // Simular tempo de carregamento mínimo para melhor UX
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    setIsClient(true);
+    
+    // Set window size
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
 
-    // Obter dimensões da janela de forma segura
-    if (typeof window !== 'undefined') {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-    }
+    // Hide loading screen after 3 seconds
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  if (!isLoading) return null;
+  // Don't render on server
+  if (!isClient) {
+    return null;
+  }
+
+  if (!isVisible) {
+    return null;
+  }
+
+  // Predefined positions for particles (deterministic)
+  const particlePositions = [
+    { x: 100, y: 150 }, { x: 300, y: 200 }, { x: 500, y: 100 }, { x: 700, y: 300 },
+    { x: 200, y: 400 }, { x: 400, y: 350 }, { x: 600, y: 450 }, { x: 800, y: 250 },
+    { x: 150, y: 500 }, { x: 350, y: 600 }, { x: 550, y: 550 }, { x: 750, y: 400 },
+    { x: 250, y: 700 }, { x: 450, y: 750 }, { x: 650, y: 650 }, { x: 850, y: 500 },
+    { x: 50, y: 800 }, { x: 250, y: 900 }, { x: 450, y: 850 }, { x: 650, y: 700 }
+  ];
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-             className="fixed inset-0 z-50 flex items-center justify-center"
-             style={{ backgroundColor: 'var(--background)' }}
+      className="fixed inset-0 bg-gradient-to-br from-versiory-black via-versiory-blue/20 to-versiory-black z-50 flex items-center justify-center"
     >
-      <div className="text-center">
-        {/* Logo Animation */}
+      <div className="text-center relative">
+        {/* Main Content */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-8"
         >
@@ -112,23 +127,23 @@ const LoadingScreen = () => {
 
         {/* Floating Particles */}
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(20)].map((_, i) => (
+          {particlePositions.map((pos, i) => (
             <motion.div
               key={i}
               initial={{ 
-                x: Math.random() * (windowSize.width || 1200),
-                y: Math.random() * (windowSize.height || 800),
+                x: pos.x,
+                y: pos.y,
                 opacity: 0
               }}
               animate={{
-                x: Math.random() * (windowSize.width || 1200),
-                y: Math.random() * (windowSize.height || 800),
+                x: pos.x + (i * 20) % 100,
+                y: pos.y + (i * 15) % 80,
                 opacity: [0, 0.5, 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 3 + (i % 3),
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: (i % 4) * 0.5,
               }}
               className="absolute w-1 h-1 bg-versiory-azure rounded-full"
             />
