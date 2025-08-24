@@ -61,9 +61,9 @@ const OrcamentoPage = () => {
       icon: Smartphone,
       category: "mobile",
       features: ["GPS", "Pagamentos", "Notificações", "Tracking", "Painel Admin", "Relatórios"],
-      basePrice: 8000,
+      basePrice: 12000,
       marketPrice: 25000,
-      ourPrice: 6500,
+      ourPrice: 12000,
       deliveryTime: "45-60 dias",
       color: "from-versiory-green to-versiory-brown",
       gradient: "bg-gradient-to-br from-versiory-green to-versiory-brown"
@@ -77,7 +77,7 @@ const OrcamentoPage = () => {
       features: ["Carrinho", "Pagamentos", "Estoque", "Relatórios", "Painel Admin", "Integração com Marketplaces"],
       basePrice: 5000,
       marketPrice: 15000,
-      ourPrice: 3800,
+      ourPrice: 5000,
       deliveryTime: "30-40 dias",
       color: "from-versiory-blue to-versiory-pink",
       gradient: "bg-gradient-to-br from-versiory-blue to-versiory-pink"
@@ -103,9 +103,9 @@ const OrcamentoPage = () => {
       icon: Code,
       category: "system",
       features: ["Dashboard", "Módulos", "Relatórios", "API", "Backup", "Suporte"],
-      basePrice: 8000,
+      basePrice: 12000,
       marketPrice: 25000,
-      ourPrice: 6000,
+      ourPrice: 12000,
       deliveryTime: "60-90 dias",
       color: "from-versiory-brown to-versiory-azure",
       gradient: "bg-gradient-to-br from-versiory-brown to-versiory-azure"
@@ -311,11 +311,46 @@ const OrcamentoPage = () => {
             </div>
           </div>
 
-          <div className="text-center mt-8">
-            <p className="text-sm text-white/60">
-              💡 <span className="font-semibold">Todos os planos incluem:</span> Suporte por 3 meses, atualizações gratuitas e garantia de satisfação!
-            </p>
-          </div>
+                     <div className="text-center mt-8">
+             <div className="bg-gradient-to-r from-versiory-green/20 via-versiory-azure/20 to-versiory-pink/20 backdrop-blur-sm border border-versiory-green/30 rounded-2xl p-6">
+               <div className="flex items-center justify-center space-x-3 mb-3">
+                 <div className="w-8 h-8 bg-versiory-green rounded-full flex items-center justify-center">
+                   <span className="text-lg">💡</span>
+                 </div>
+                 <h4 className="text-xl font-bold text-versiory-green">
+                   GARANTIA VERSIORY
+                 </h4>
+               </div>
+               <p className="text-lg text-white/90 font-medium mb-3">
+                 <span className="font-bold text-versiory-green">Todos os planos incluem:</span>
+               </p>
+                               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                  <div className="flex items-center space-x-2 justify-center">
+                    <div className="w-6 h-6 bg-versiory-azure rounded-full flex items-center justify-center">
+                      <span className="text-xs">✓</span>
+                    </div>
+                    <span className="text-white/80 font-medium">Suporte por 3 meses</span>
+                  </div>
+                  <div className="flex items-center space-x-2 justify-center">
+                    <div className="w-6 h-6 bg-versiory-pink rounded-full flex items-center justify-center">
+                      <span className="text-xs">✓</span>
+                    </div>
+                    <span className="text-white/80 font-medium">Atualizações gratuitas</span>
+                  </div>
+                  <div className="flex items-center space-x-2 justify-center">
+                    <div className="w-6 h-6 bg-versiory-green rounded-full flex items-center justify-center">
+                      <span className="text-xs">✓</span>
+                    </div>
+                    <span className="text-white/80 font-medium">Programa de indicação</span>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-versiory-green/10 rounded-lg border border-versiory-green/20">
+                  <p className="text-sm text-versiory-green font-semibold">
+                    🎯 <span className="font-bold">Indique um cliente e ganhe 50% de desconto</span> na próxima mensalidade!
+                  </p>
+                </div>
+             </div>
+           </div>
         </motion.div>
 
         {/* Contact Section */}

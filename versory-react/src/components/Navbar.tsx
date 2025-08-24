@@ -10,14 +10,24 @@ const Navbar = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsOpen(false);
+  };
+
   // Removido o useEffect que detectava scroll para manter navbar sempre escura
 
   const navItems = [
     { name: 'INÍCIO', href: '#home' },
-    { name: 'SOBRE', href: '#about' },
-    { name: 'SERVIÇOS', href: '#services' },
+    { name: 'SOBRE', href: '#empresa' },
+    { name: 'SERVIÇOS', href: '#servicos' },
     { name: 'PORTFÓLIO', href: '#portfolio' },
-    { name: 'SISTEMA', href: '#school-system' },
     { name: 'CONTATO', href: '#contact' }
   ];
 
@@ -64,15 +74,15 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
+                onClick={() => scrollToSection(item.href)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                                  className={`${theme === 'dark' ? 'text-white/80' : 'text-gray-800/80'} hover:text-versiory-green transition-colors duration-300 font-medium`}
               >
                 {item.name}
-              </motion.a>
+              </motion.button>
             ))}
           </div>
 
@@ -126,15 +136,14 @@ const Navbar = () => {
         >
           <div className="py-4 space-y-4">
             {navItems.map((item) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={() => scrollToSection(item.href)}
                 whileHover={{ x: 10 }}
-                                 className={`block px-4 py-2 ${theme === 'dark' ? 'text-white/80' : 'text-gray-800/80'} hover:text-versiory-green transition-colors duration-300`}
+                                 className={`block w-full text-left px-4 py-2 ${theme === 'dark' ? 'text-white/80' : 'text-gray-800/80'} hover:text-versiory-green transition-colors duration-300`}
               >
                 {item.name}
-              </motion.a>
+              </motion.button>
             ))}
             
             {/* Mobile Social Icons */}
