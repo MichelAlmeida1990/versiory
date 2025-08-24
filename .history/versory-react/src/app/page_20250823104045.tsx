@@ -2,17 +2,17 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import ProjectCarousel3D from '@/components/ProjectCarousel3D';
+import Portfolio from '@/components/Portfolio';
 import Contact from '@/components/Profile3D';
 import InteractiveEffects from '@/components/InteractiveEffects';
 import TechStackVisor from '@/components/TechStackVisor';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Navbar />
       <Hero />
-      <ProjectCarousel3D />
+      <Portfolio />
       <About />
       <Services />
       <Contact />

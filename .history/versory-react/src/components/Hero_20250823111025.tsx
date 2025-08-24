@@ -57,20 +57,7 @@ const Hero = () => {
   }, [isSelected]);
   
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
-      {/* Background Image Banner */}
-      <div className="absolute inset-0">
-        <div 
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/banner.png')"
-          }}
-        />
-        
-        {/* Glassmorphism Overlay */}
-        <div className="absolute inset-0 backdrop-blur-[2px] bg-white/5 border border-white/10"></div>
-      </div>
-
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Content */}
       <div className="relative z-10 text-center px-4 py-16 max-w-4xl mx-auto mt-20">
           <motion.div
@@ -153,7 +140,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
                                      <motion.p
-              className={`text-3xl md:text-4xl mb-12 max-w-3xl mx-auto font-bold ${theme === 'dark' ? 'text-white/90' : 'text-versiory-green'}`}
+              className={`text-3xl md:text-4xl mb-12 max-w-3xl mx-auto font-bold ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}
             >
               {description.split('').map((letter, index) => (
                 <motion.span

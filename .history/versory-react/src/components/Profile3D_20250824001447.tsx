@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Instagram, Github, Award, Users, Clock, CheckCircle, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Github, Award, Users, Clock, CheckCircle } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -86,31 +86,6 @@ const Contact = () => {
 
               {/* Redes Sociais */}
               <div className="mt-8">
-                <h4 className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Entre em Contato</h4>
-                <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                  <motion.a
-                    href="https://wa.me/5511959407653?text=Olá! Gostaria de saber mais sobre os serviços da VERSIORY."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center space-x-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 transition-colors"
-                  >
-                    <MessageCircle size={20} />
-                    <span>WhatsApp Principal</span>
-                  </motion.a>
-                  
-                  <motion.a
-                    href="mailto:versiory@gmail.com?subject=Contato - VERSIORY&body=Olá!%0A%0AGostaria de saber mais sobre os serviços da VERSIORY.%0A%0AObrigado!"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-versiory-azure text-versiory-azure font-semibold rounded-full hover:bg-versiory-azure hover:text-white transition-all duration-300"
-                  >
-                    <Mail size={20} />
-                    <span>Enviar Email</span>
-                  </motion.a>
-                </div>
-                
                 <h4 className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Redes Sociais</h4>
                 <div className="flex space-x-4">
                   <motion.a

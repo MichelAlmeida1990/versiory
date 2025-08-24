@@ -57,20 +57,7 @@ const Hero = () => {
   }, [isSelected]);
   
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
-      {/* Background Image Banner */}
-      <div className="absolute inset-0">
-        <div 
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/banner.png')"
-          }}
-        />
-        
-        {/* Glassmorphism Overlay */}
-        <div className="absolute inset-0 backdrop-blur-[2px] bg-white/5 border border-white/10"></div>
-      </div>
-
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Content */}
       <div className="relative z-10 text-center px-4 py-16 max-w-4xl mx-auto mt-20">
           <motion.div
