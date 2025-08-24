@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Sparkles, Zap, Star, Heart } from 'lucide-react';
 
-
 const InteractiveEffects = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; vx: number; vy: number; life: number }>>([]);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [isClient, setIsClient] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -21,6 +21,11 @@ const InteractiveEffects = () => {
   
   const springRotateX = useSpring(rotateX, { damping: 20, stiffness: 300 });
   const springRotateY = useSpring(rotateY, { damping: 20, stiffness: 300 });
+
+  // Set client-side flag
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Set window size on mount
   useEffect(() => {
@@ -44,8 +49,8 @@ const InteractiveEffects = () => {
       mouseX.set(x - rect.width / 2);
       mouseY.set(y - rect.height / 2);
 
-      // Create particles on mouse move
-      if (Math.random() > 0.7) {
+      // Create particles on mouse move (only on client)
+      if (isClient && Math.random() > 0.7) {
         const newParticle = {
           id: Date.now() + Math.random(),
           x: x,
@@ -64,17 +69,19 @@ const InteractiveEffects = () => {
       const x = e.clientX - (containerRef.current.getBoundingClientRect().left);
       const y = e.clientY - (containerRef.current.getBoundingClientRect().top);
 
-      // Create explosion effect
-      for (let i = 0; i < 10; i++) {
-        const newParticle = {
-          id: Date.now() + Math.random() + i,
-          x: x,
-          y: y,
-          vx: (Math.random() - 0.5) * 8,
-          vy: (Math.random() - 0.5) * 8,
-          life: 1
-        };
-        setParticles(prev => [...prev, newParticle]);
+      // Create explosion effect (only on client)
+      if (isClient) {
+        for (let i = 0; i < 10; i++) {
+          const newParticle = {
+            id: Date.now() + Math.random() + i,
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 8,
+            vy: (Math.random() - 0.5) * 8,
+            life: 1
+          };
+          setParticles(prev => [...prev, newParticle]);
+        }
       }
     };
 
@@ -90,7 +97,7 @@ const InteractiveEffects = () => {
         container.removeEventListener('click', handleClick);
       }
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isClient]);
 
   // Particle animation
   useEffect(() => {
@@ -110,10 +117,10 @@ const InteractiveEffects = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Canvas drawing
+  // Canvas rendering
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || !isClient) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -135,7 +142,24 @@ const InteractiveEffects = () => {
       ctx.fill();
       ctx.restore();
     });
-  }, [particles, windowSize]);
+  }, [particles, windowSize, isClient]);
+
+  // Don't render anything on server
+  if (!isClient) {
+    return null;
+  }
+
+  // Predefined positions for floating elements (deterministic)
+  const floatingPositions = [
+    { x: 100, y: 150 }, { x: 300, y: 200 }, { x: 500, y: 100 }, { x: 700, y: 300 },
+    { x: 200, y: 400 }, { x: 400, y: 350 }, { x: 600, y: 450 }, { x: 800, y: 250 },
+    { x: 150, y: 500 }, { x: 350, y: 600 }, { x: 550, y: 550 }, { x: 750, y: 400 },
+    { x: 250, y: 700 }, { x: 450, y: 750 }, { x: 650, y: 650 }, { x: 850, y: 500 },
+    { x: 50, y: 800 }, { x: 250, y: 900 }, { x: 450, y: 850 }, { x: 650, y: 700 },
+    { x: 100, y: 1000 }, { x: 300, y: 950 }, { x: 500, y: 900 }, { x: 700, y: 750 },
+    { x: 150, y: 1100 }, { x: 350, y: 1050 }, { x: 550, y: 1000 }, { x: 750, y: 850 },
+    { x: 200, y: 1200 }, { x: 400, y: 1150 }, { x: 600, y: 1100 }, { x: 800, y: 950 }
+  ];
 
   return (
     <div ref={containerRef} className="fixed inset-0 pointer-events-none z-10">
@@ -147,25 +171,25 @@ const InteractiveEffects = () => {
       
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
+        {floatingPositions.map((pos, i) => (
           <motion.div
             key={i}
             initial={{ 
-              x: Math.random() * (windowSize.width || 1200),
-              y: Math.random() * (windowSize.height || 800),
+              x: pos.x,
+              y: pos.y,
               opacity: 0,
               scale: 0
             }}
             animate={{
-              x: Math.random() * (windowSize.width || 1200),
-              y: Math.random() * (windowSize.height || 800),
+              x: pos.x + (i * 20) % 100,
+              y: pos.y + (i * 15) % 80,
               opacity: [0, 1, 0.8, 0],
               scale: [0, 1.2, 1, 0.8]
             }}
             transition={{
-              duration: 8 + Math.random() * 6,
+              duration: 8 + (i % 6),
               repeat: Infinity,
-              delay: Math.random() * 8,
+              delay: (i % 8) * 0.5,
               ease: "easeInOut"
             }}
             className="absolute"
@@ -203,7 +227,7 @@ const InteractiveEffects = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: (i % 20) * 0.1,
             }}
             className="border border-versiory-azure/20"
           />

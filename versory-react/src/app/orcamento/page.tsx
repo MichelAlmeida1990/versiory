@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ArrowLeft, Check, Star, Zap, Globe, Smartphone, Palette, Database, Code, Shield, TrendingUp, Phone, Mail, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
+import TetrisBackground from '@/components/TetrisBackground';
 
 interface Service {
   id: number;
@@ -128,9 +129,10 @@ const OrcamentoPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-versiory-black to-versiory-blue/10">
+    <div className="min-h-screen bg-gradient-to-b from-versiory-black to-versiory-blue/10 relative">
+      <TetrisBackground />
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         <div className="flex items-center justify-between mb-8">
           <Link 
             href="/"
