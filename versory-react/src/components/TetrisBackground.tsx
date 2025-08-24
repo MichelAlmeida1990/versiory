@@ -156,31 +156,39 @@ const TetrisBackground = () => {
         }
       }
 
-      // Add some initial blocks at the bottom for better visual
-      for (let x = 0; x < boardWidth; x++) {
-        if (Math.random() > 0.7) {
-          const colors = [
-            ['#3B54A5', '#7689C4', '#4F6FB6'],
-            ['#D61E3C', '#F16C6B', '#EC2A4B'],
-            ['#58B247', '#96CC6E', '#73BF44'],
-            ['#3EAAD4', '#78CDF4', '#36C0F0'],
-            ['#EC5E24', '#EA9A54', '#E47E25']
-          ];
-          const randomColors = colors[Math.floor(Math.random() * colors.length)];
-          
-          board[x][boardHeight - 1] = {
-            data: 1,
-            colors: randomColors
-          };
-          
-          if (Math.random() > 0.5 && boardHeight > 1) {
-            board[x][boardHeight - 2] = {
-              data: 1,
-              colors: randomColors
-            };
-          }
-        }
-      }
+             // Add some initial blocks at the bottom for better visual - distributed across screen
+       const screenSections = 8;
+       const sectionWidth = Math.floor(boardWidth / screenSections);
+       
+       for (let section = 0; section < screenSections; section++) {
+         if (Math.random() > 0.6) { // Reduced probability for less crowding
+           const colors = [
+             ['#3B54A5', '#7689C4', '#4F6FB6'],
+             ['#D61E3C', '#F16C6B', '#EC2A4B'],
+             ['#58B247', '#96CC6E', '#73BF44'],
+             ['#3EAAD4', '#78CDF4', '#36C0F0'],
+             ['#EC5E24', '#EA9A54', '#E47E25']
+           ];
+           const randomColors = colors[Math.floor(Math.random() * colors.length)];
+           
+           // Place blocks in the center of each section
+           const sectionCenter = (section * sectionWidth) + Math.floor(sectionWidth / 2);
+           
+           if (sectionCenter < boardWidth) {
+             board[sectionCenter][boardHeight - 1] = {
+               data: 1,
+               colors: randomColors
+             };
+             
+             if (Math.random() > 0.5 && boardHeight > 1) {
+               board[sectionCenter][boardHeight - 2] = {
+                 data: 1,
+                 colors: randomColors
+               };
+             }
+           }
+         }
+       }
     };
 
     // Check if piece can move
@@ -205,27 +213,30 @@ const TetrisBackground = () => {
       return true;
     };
 
-    // Create new falling piece
-    const spawnNewPiece = () => {
-      const pieceNum = Math.floor(Math.random() * tetrominos.length);
-      const tetromino = tetrominos[pieceNum];
-      
-      // More random positioning to avoid stacking in same line
-      const randomX = Math.floor(Math.random() * (boardWidth - 4));
-      const randomY = -4 - Math.floor(Math.random() * 8); // Random starting height
-      
-      const newPiece: Piece = {
-        data: tetromino.data,
-        colors: tetromino.colors,
-        x: randomX,
-        y: randomY,
-        speed: 0.02 + Math.random() * 0.05, // Extremely slow speed for very smooth fall
-        id: pieceId++
-      };
+         // Create new falling piece
+     const spawnNewPiece = () => {
+       const pieceNum = Math.floor(Math.random() * tetrominos.length);
+       const tetromino = tetrominos[pieceNum];
+       
+       // Distribute pieces across the entire screen width
+       const screenSections = 8; // Divide screen into 8 sections
+       const sectionWidth = Math.floor(boardWidth / screenSections);
+       const currentSection = Math.floor(Math.random() * screenSections);
+       const randomX = (currentSection * sectionWidth) + Math.floor(Math.random() * (sectionWidth - 4));
+       const randomY = -4 - Math.floor(Math.random() * 8); // Random starting height
+       
+       const newPiece: Piece = {
+         data: tetromino.data,
+         colors: tetromino.colors,
+         x: Math.max(0, Math.min(randomX, boardWidth - 4)), // Ensure within bounds
+         y: randomY,
+         speed: 0.02 + Math.random() * 0.05, // Extremely slow speed for very smooth fall
+         id: pieceId++
+       };
 
-      fallingPieces.push(newPiece);
-      console.log('New piece spawned:', newPiece.id);
-    };
+       fallingPieces.push(newPiece);
+       console.log('New piece spawned:', newPiece.id, 'at section:', currentSection);
+     };
 
     // Fill board with piece
     const fillBoard = (piece: Piece) => {
