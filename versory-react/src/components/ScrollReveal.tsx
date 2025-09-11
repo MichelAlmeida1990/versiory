@@ -13,13 +13,13 @@ interface ScrollRevealProps {
   threshold?: number;
 }
 
-const ScrollReveal = ({ 
-  children, 
-  className = '', 
-  delay = 0, 
+const ScrollReveal = ({
+  children,
+  className = '',
+  delay = 0,
   direction = 'up',
   duration = 0.6,
-  threshold = 0.1
+  threshold = 0.1,
 }: ScrollRevealProps) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -36,51 +36,51 @@ const ScrollReveal = ({
   const getVariants = () => {
     const baseVariants = {
       hidden: { opacity: 0 },
-      visible: { 
-        opacity: 1
-      }
+      visible: {
+        opacity: 1,
+      },
     };
 
     switch (direction) {
       case 'up':
         return {
           hidden: { opacity: 0, y: 50 },
-          visible: { 
-            opacity: 1, 
-            y: 0
-          }
+          visible: {
+            opacity: 1,
+            y: 0,
+          },
         };
       case 'down':
         return {
           hidden: { opacity: 0, y: -50 },
-          visible: { 
-            opacity: 1, 
-            y: 0
-          }
+          visible: {
+            opacity: 1,
+            y: 0,
+          },
         };
       case 'left':
         return {
           hidden: { opacity: 0, x: 50 },
-          visible: { 
-            opacity: 1, 
-            x: 0
-          }
+          visible: {
+            opacity: 1,
+            x: 0,
+          },
         };
       case 'right':
         return {
           hidden: { opacity: 0, x: -50 },
-          visible: { 
-            opacity: 1, 
-            x: 0
-          }
+          visible: {
+            opacity: 1,
+            x: 0,
+          },
         };
       case 'scale':
         return {
           hidden: { opacity: 0, scale: 0.8 },
-          visible: { 
-            opacity: 1, 
-            scale: 1
-          }
+          visible: {
+            opacity: 1,
+            scale: 1,
+          },
         };
       case 'fade':
       default:
@@ -91,10 +91,10 @@ const ScrollReveal = ({
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
+      initial='hidden'
       animate={controls}
       variants={getVariants()}
-      transition={{ duration, delay, ease: "easeOut" }}
+      transition={{ duration, delay, ease: 'easeOut' }}
       className={className}
     >
       {children}
@@ -102,4 +102,4 @@ const ScrollReveal = ({
   );
 };
 
-export default ScrollReveal; 
+export default ScrollReveal;

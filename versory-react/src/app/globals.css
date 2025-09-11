@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Dark Theme (Default) */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --background: #000000;
   --foreground: #ffffff;
   --card-bg: #0a0a0a;
@@ -14,7 +14,7 @@
   --overlay: rgba(0, 0, 0, 0.7);
   --glass-bg: rgba(0, 0, 0, 0.5);
   --glass-border: rgba(0, 175, 238, 0.3);
-  
+
   /* Variáveis para Tailwind */
   --card: 0 0% 3.9%;
   --card-foreground: 0 0% 98%;
@@ -36,7 +36,7 @@
 }
 
 /* Light Theme */
-[data-theme="light"] {
+[data-theme='light'] {
   --background: #f0f8ff;
   --foreground: #000000;
   --card-bg: rgba(173, 216, 230, 0.3);
@@ -47,7 +47,7 @@
   --overlay: rgba(255, 255, 255, 0.9);
   --glass-bg: rgba(173, 216, 230, 0.3);
   --glass-border: rgba(0, 175, 238, 0.3);
-  
+
   /* Variáveis para Tailwind */
   --card: 0 0% 100%;
   --card-foreground: 0 0% 3.9%;
@@ -83,92 +83,97 @@ html {
 body {
   background: var(--background) !important;
   color: var(--foreground) !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   min-height: 100vh;
 }
 
 /* Smooth transitions for theme changes */
 * {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Garantir que o tema seja aplicado corretamente */
-html[data-theme="light"] {
+html[data-theme='light'] {
   background-color: #f0f8ff !important;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   background-color: #000000 !important;
 }
 
-html[data-theme="light"] body {
+html[data-theme='light'] body {
   background-color: #f0f8ff !important;
   color: #000000 !important;
 }
 
-html[data-theme="dark"] body {
+html[data-theme='dark'] body {
   background-color: #000000 !important;
   color: #ffffff !important;
 }
 
 /* Sobrescrever qualquer classe do Tailwind que possa estar interferindo */
-html[data-theme="light"] .bg-versiory-black {
+html[data-theme='light'] .bg-versiory-black {
   background-color: #f0f8ff !important;
 }
 
-html[data-theme="dark"] .bg-white {
+html[data-theme='dark'] .bg-white {
   background-color: #000000 !important;
 }
 
 /* Garantir que seções tenham o fundo correto */
-html[data-theme="light"] section {
+html[data-theme='light'] section {
   background-color: transparent !important;
 }
 
-html[data-theme="dark"] section {
+html[data-theme='dark'] section {
   background-color: transparent !important;
 }
 
 /* Forçar atualização do tema */
-html[data-theme="light"] body,
-html[data-theme="light"] html {
+html[data-theme='light'] body,
+html[data-theme='light'] html {
   background-color: #f0f8ff !important;
 }
 
-html[data-theme="dark"] body,
-html[data-theme="dark"] html {
+html[data-theme='dark'] body,
+html[data-theme='dark'] html {
   background-color: #000000 !important;
 }
 
 /* Regra final para garantir que o tema seja aplicado */
-html[data-theme="light"] {
+html[data-theme='light'] {
   background: #f0f8ff !important;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   background: #000000 !important;
 }
 
 /* Glassmorphism para tema claro */
-html[data-theme="light"] .backdrop-blur-md {
+html[data-theme='light'] .backdrop-blur-md {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-html[data-theme="light"] .bg-white\/10 {
+html[data-theme='light'] .bg-white\/10 {
   background-color: rgba(173, 216, 230, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 /* Fundo azul clarinho para glassmorphism */
-html[data-theme="light"] .bg-blue-light {
+html[data-theme='light'] .bg-blue-light {
   background-color: rgba(173, 216, 230, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-html[data-theme="light"] .bg-blue-light\/70 {
+html[data-theme='light'] .bg-blue-light\/70 {
   background-color: rgba(173, 216, 230, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -272,12 +277,12 @@ html {
 }
 
 /* Forçar atualização do tema */
-html[data-theme="light"] body,
-html[data-theme="light"] html {
+html[data-theme='light'] body,
+html[data-theme='light'] html {
   background-color: #f0f8ff !important;
 }
 
-html[data-theme="dark"] body,
-html[data-theme="dark"] html {
+html[data-theme='dark'] body,
+html[data-theme='dark'] html {
   background-color: #000000 !important;
 }

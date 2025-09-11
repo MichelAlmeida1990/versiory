@@ -12,12 +12,12 @@ interface OptimizedImageProps {
   placeholder?: string;
 }
 
-const OptimizedImage = ({ 
-  src, 
-  alt, 
-  className = "", 
+const OptimizedImage = ({
+  src,
+  alt,
+  className = '',
   priority = false,
-  placeholder = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMDMxZjVmIi8+Cjwvc3ZnPg=="
+  placeholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMDMxZjVmIi8+Cjwvc3ZnPg==',
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -52,15 +52,15 @@ const OptimizedImage = ({
       className={`relative ${className}`}
     >
       {/* Placeholder */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-versiory-blue/20 to-versiory-azure/20"
+      <div
+        className='absolute inset-0 bg-gradient-to-br from-versiory-blue/20 to-versiory-azure/20'
         style={{
           backgroundImage: `url(${placeholder})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       />
-      
+
       {/* Actual Image */}
       {isInView && (
         <Image
@@ -74,14 +74,14 @@ const OptimizedImage = ({
           priority={priority}
         />
       )}
-      
+
       {/* Loading Spinner */}
       {!isLoaded && isInView && (
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className='absolute inset-0 flex items-center justify-center'>
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-8 h-8 border-2 border-versiory-azure border-t-transparent rounded-full"
+            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+            className='w-8 h-8 border-2 border-versiory-azure border-t-transparent rounded-full'
           />
         </div>
       )}
@@ -89,4 +89,4 @@ const OptimizedImage = ({
   );
 };
 
-export default OptimizedImage; 
+export default OptimizedImage;

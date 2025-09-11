@@ -13,29 +13,53 @@ interface ScrollRevealProps {
   delay?: number;
 }
 
-export const ScrollReveal = ({ 
-  children, 
-  className = '', 
+export const ScrollReveal = ({
+  children,
+  className = '',
   direction = 'up',
   distance = 100,
   threshold = 0.1,
   duration = 0.8,
-  delay = 0
+  delay = 0,
 }: ScrollRevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, threshold, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, threshold, 0.8, 1], [0.8, 1, 1, 0.8]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, threshold, 0.8, 1],
+    [0, 1, 1, 0]
+  );
+  const scale = useTransform(
+    scrollYProgress,
+    [0, threshold, 0.8, 1],
+    [0.8, 1, 1, 0.8]
+  );
 
   // Transform calculations based on direction
-  const transformUp = useTransform(scrollYProgress, [0, threshold, 1], [distance, 0, 0]);
-  const transformDown = useTransform(scrollYProgress, [0, threshold, 1], [-distance, 0, 0]);
-  const transformLeft = useTransform(scrollYProgress, [0, threshold, 1], [distance, 0, 0]);
-  const transformRight = useTransform(scrollYProgress, [0, threshold, 1], [-distance, 0, 0]);
+  const transformUp = useTransform(
+    scrollYProgress,
+    [0, threshold, 1],
+    [distance, 0, 0]
+  );
+  const transformDown = useTransform(
+    scrollYProgress,
+    [0, threshold, 1],
+    [-distance, 0, 0]
+  );
+  const transformLeft = useTransform(
+    scrollYProgress,
+    [0, threshold, 1],
+    [distance, 0, 0]
+  );
+  const transformRight = useTransform(
+    scrollYProgress,
+    [0, threshold, 1],
+    [-distance, 0, 0]
+  );
 
   const getTransform = () => {
     switch (direction) {
@@ -67,7 +91,7 @@ export const ScrollReveal = ({
       transition={{
         duration,
         delay,
-        ease: "easeOut"
+        ease: 'easeOut',
       }}
     >
       {children}
@@ -82,30 +106,26 @@ interface ParallaxSectionProps {
   direction?: 'up' | 'down';
 }
 
-export const ParallaxSection = ({ 
-  children, 
-  className = '', 
-  speed = 0.5, 
-  direction = 'up' 
+export const ParallaxSection = ({
+  children,
+  className = '',
+  speed = 0.5,
+  direction = 'up',
 }: ParallaxSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
 
   const y = useTransform(
-    scrollYProgress, 
-    [0, 1], 
+    scrollYProgress,
+    [0, 1],
     direction === 'up' ? [0, -100 * speed] : [0, 100 * speed]
   );
 
   return (
-    <motion.div
-      ref={ref}
-      className={className}
-      style={{ y }}
-    >
+    <motion.div ref={ref} className={className} style={{ y }}>
       {children}
     </motion.div>
   );
@@ -118,11 +138,11 @@ interface StaggerContainerProps {
   direction?: 'up' | 'down' | 'left' | 'right';
 }
 
-export const StaggerContainer = ({ 
-  children, 
-  className = '', 
+export const StaggerContainer = ({
+  children,
+  className = '',
   staggerDelay = 0.1,
-  direction = 'up'
+  direction = 'up',
 }: StaggerContainerProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -130,9 +150,9 @@ export const StaggerContainer = ({
       opacity: 1,
       transition: {
         staggerChildren: staggerDelay,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -140,41 +160,42 @@ export const StaggerContainer = ({
       opacity: 0,
       y: direction === 'up' ? 30 : direction === 'down' ? -30 : 0,
       x: direction === 'left' ? 30 : direction === 'right' ? -30 : 0,
-      scale: 0.9
+      scale: 0.9,
     },
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
-      scale: 1
-    }
+      scale: 1,
+    },
   };
 
   return (
     <motion.div
       className={className}
       variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
+      initial='hidden'
+      whileInView='visible'
       viewport={{ once: true, amount: 0.1 }}
     >
-      {Array.isArray(children) ? 
+      {Array.isArray(children) ? (
         children.map((child, index) => (
-          <motion.div 
-            key={index} 
+          <motion.div
+            key={index}
             variants={itemVariants}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             {child}
           </motion.div>
-        )) : 
-        <motion.div 
+        ))
+      ) : (
+        <motion.div
           variants={itemVariants}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           {children}
         </motion.div>
-      }
+      )}
     </motion.div>
   );
-}; 
+};

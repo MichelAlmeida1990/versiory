@@ -1,0 +1,26 @@
+{
+  "name": "Versiory - Desenvolvimento Web Moderno",
+  "short_name": "Versiory",
+  "description": "Especialistas em desenvolvimento web moderno e soluções digitais inovadoras",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff88",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

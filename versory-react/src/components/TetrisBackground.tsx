@@ -21,77 +21,77 @@ interface BoardCell {
   colors: string[];
 }
 
-const tetrominos: Tetromino[] = [
-  {
+    const tetrominos: Tetromino[] = [
+      {
     // Box
     colors: ['#3B54A5', '#7689C4', '#4F6FB6'],
-    data: [
+        data: [
+          [0, 0, 0, 0],
+          [0, 1, 1, 0],
+          [0, 1, 1, 0],
       [0, 0, 0, 0],
-      [0, 1, 1, 0],
-      [0, 1, 1, 0],
-      [0, 0, 0, 0]
-    ]
-  },
-  {
+    ],
+      },
+      {
     // Stick
     colors: ['#D61E3C', '#F16C6B', '#EC2A4B'],
-    data: [
+        data: [
+          [0, 0, 0, 0],
+          [0, 0, 0, 0],
+          [1, 1, 1, 1],
       [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [1, 1, 1, 1],
-      [0, 0, 0, 0]
-    ]
-  },
-  {
+    ],
+      },
+      {
     // Z
     colors: ['#58B247', '#96CC6E', '#73BF44'],
-    data: [
+        data: [
+          [0, 0, 0, 0],
+          [0, 1, 1, 0],
+          [0, 0, 1, 1],
       [0, 0, 0, 0],
-      [0, 1, 1, 0],
-      [0, 0, 1, 1],
-      [0, 0, 0, 0]
-    ]
-  },
-  {
-    // T
+    ],
+      },
+      {
+        // T
     colors: ['#3EAAD4', '#78CDF4', '#36C0F0'],
-    data: [
+        data: [
+          [0, 0, 0, 0],
+          [0, 1, 1, 1],
+          [0, 0, 1, 0],
       [0, 0, 0, 0],
-      [0, 1, 1, 1],
-      [0, 0, 1, 0],
-      [0, 0, 0, 0]
-    ]
-  },
-  {
+    ],
+      },
+      {
     // S
     colors: ['#EC5E24', '#EA9A54', '#E47E25'],
-    data: [
+        data: [
+          [0, 0, 0, 0],
+          [0, 1, 1, 0],
+          [1, 1, 0, 0],
       [0, 0, 0, 0],
-      [0, 1, 1, 0],
-      [1, 1, 0, 0],
-      [0, 0, 0, 0]
-    ]
-  },
-  {
+    ],
+      },
+      {
     // Backwards L
     colors: ['#DC9F27', '#F6C564', '#F2B52A'],
-    data: [
-      [0, 0, 1, 0],
-      [0, 0, 1, 0],
-      [0, 1, 1, 0],
-      [0, 0, 0, 0]
-    ]
-  },
-  {
-    // L
+        data: [
+          [0, 0, 1, 0],
+          [0, 0, 1, 0],
+          [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ],
+      },
+      {
+        // L
     colors: ['#9E237E', '#C16FAD', '#B33F97'],
-    data: [
-      [0, 1, 0, 0],
-      [0, 1, 0, 0],
-      [0, 1, 1, 0],
-      [0, 0, 0, 0]
-    ]
-  }
+        data: [
+          [0, 1, 0, 0],
+          [0, 1, 0, 0],
+          [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ],
+  },
 ];
 
 const TetrisBackground = () => {
@@ -151,60 +151,76 @@ const TetrisBackground = () => {
         for (let y = 0; y <= boardHeight; y++) {
           board[x][y] = {
             data: 0,
-            colors: ['#000000', '#000000', '#000000']
+            colors: ['#000000', '#000000', '#000000'],
           };
         }
       }
 
-             // Add some initial blocks at the bottom for better visual - distributed across screen
-       const screenSections = 8;
-       const sectionWidth = Math.floor(boardWidth / screenSections);
-       
-       for (let section = 0; section < screenSections; section++) {
-         if (Math.random() > 0.6) { // Reduced probability for less crowding
-           const colors = [
-             ['#3B54A5', '#7689C4', '#4F6FB6'],
-             ['#D61E3C', '#F16C6B', '#EC2A4B'],
-             ['#58B247', '#96CC6E', '#73BF44'],
-             ['#3EAAD4', '#78CDF4', '#36C0F0'],
-             ['#EC5E24', '#EA9A54', '#E47E25']
-           ];
-           const randomColors = colors[Math.floor(Math.random() * colors.length)];
-           
-           // Place blocks in the center of each section
-           const sectionCenter = (section * sectionWidth) + Math.floor(sectionWidth / 2);
-           
-           if (sectionCenter < boardWidth) {
-             board[sectionCenter][boardHeight - 1] = {
-               data: 1,
-               colors: randomColors
-             };
-             
-             if (Math.random() > 0.5 && boardHeight > 1) {
-               board[sectionCenter][boardHeight - 2] = {
-                 data: 1,
-                 colors: randomColors
-               };
-             }
-           }
-         }
-       }
+      // Add some initial blocks at the bottom for better visual - distributed across screen
+      const screenSections = 8;
+      const sectionWidth = Math.floor(boardWidth / screenSections);
+
+      for (let section = 0; section < screenSections; section++) {
+        if (Math.random() > 0.6) {
+          // Reduced probability for less crowding
+          const colors = [
+            ['#3B54A5', '#7689C4', '#4F6FB6'],
+            ['#D61E3C', '#F16C6B', '#EC2A4B'],
+            ['#58B247', '#96CC6E', '#73BF44'],
+            ['#3EAAD4', '#78CDF4', '#36C0F0'],
+            ['#EC5E24', '#EA9A54', '#E47E25'],
+          ];
+          const randomColors =
+            colors[Math.floor(Math.random() * colors.length)];
+
+          // Place blocks in the center of each section
+          const sectionCenter =
+            section * sectionWidth + Math.floor(sectionWidth / 2);
+
+          if (sectionCenter < boardWidth) {
+            board[sectionCenter][boardHeight - 1] = {
+              data: 1,
+              colors: randomColors,
+            };
+
+            if (Math.random() > 0.5 && boardHeight > 1) {
+              board[sectionCenter][boardHeight - 2] = {
+              data: 1,
+                colors: randomColors,
+              };
+            }
+          }
+        }
+      }
     };
 
     // Check if piece can move
-    const checkMovement = (piece: Piece, newX: number, newY: number): boolean => {
+    const checkMovement = (
+      piece: Piece,
+      newX: number,
+      newY: number
+    ): boolean => {
       for (let x = 0; x < 4; x++) {
         for (let y = 0; y < 4; y++) {
           if (piece.data[x][y] === 1) {
             const newPosX = piece.x + x + newX;
             const newPosY = piece.y + y + newY;
 
-            if (newPosX < 0 || newPosX >= boardWidth || newPosY >= boardHeight) {
+            if (
+              newPosX < 0 ||
+              newPosX >= boardWidth ||
+              newPosY >= boardHeight
+            ) {
               return false;
             }
 
             // Check if board position exists and has data
-            if (newPosY >= 0 && board[newPosX] && board[newPosX][newPosY] && board[newPosX][newPosY].data === 1) {
+            if (
+              newPosY >= 0 &&
+              board[newPosX] &&
+              board[newPosX][newPosY] &&
+              board[newPosX][newPosY].data === 1
+            ) {
               return false;
             }
           }
@@ -213,30 +229,37 @@ const TetrisBackground = () => {
       return true;
     };
 
-         // Create new falling piece
-     const spawnNewPiece = () => {
-       const pieceNum = Math.floor(Math.random() * tetrominos.length);
-       const tetromino = tetrominos[pieceNum];
-       
-       // Distribute pieces across the entire screen width
-       const screenSections = 8; // Divide screen into 8 sections
-       const sectionWidth = Math.floor(boardWidth / screenSections);
-       const currentSection = Math.floor(Math.random() * screenSections);
-       const randomX = (currentSection * sectionWidth) + Math.floor(Math.random() * (sectionWidth - 4));
-       const randomY = -4 - Math.floor(Math.random() * 8); // Random starting height
-       
-       const newPiece: Piece = {
-         data: tetromino.data,
-         colors: tetromino.colors,
-         x: Math.max(0, Math.min(randomX, boardWidth - 4)), // Ensure within bounds
-         y: randomY,
-         speed: 0.02 + Math.random() * 0.05, // Extremely slow speed for very smooth fall
-         id: pieceId++
-       };
+    // Create new falling piece
+    const spawnNewPiece = () => {
+      const pieceNum = Math.floor(Math.random() * tetrominos.length);
+      const tetromino = tetrominos[pieceNum];
 
-       fallingPieces.push(newPiece);
-       console.log('New piece spawned:', newPiece.id, 'at section:', currentSection);
-     };
+      // Distribute pieces across the entire screen width
+      const screenSections = 8; // Divide screen into 8 sections
+      const sectionWidth = Math.floor(boardWidth / screenSections);
+      const currentSection = Math.floor(Math.random() * screenSections);
+      const randomX =
+        currentSection * sectionWidth +
+        Math.floor(Math.random() * (sectionWidth - 4));
+      const randomY = -4 - Math.floor(Math.random() * 8); // Random starting height
+
+      const newPiece: Piece = {
+        data: tetromino.data,
+        colors: tetromino.colors,
+        x: Math.max(0, Math.min(randomX, boardWidth - 4)), // Ensure within bounds
+        y: randomY,
+        speed: 0.02 + Math.random() * 0.05, // Extremely slow speed for very smooth fall
+        id: pieceId++,
+      };
+
+      fallingPieces.push(newPiece);
+      console.log(
+        'New piece spawned:',
+        newPiece.id,
+        'at section:',
+        currentSection
+      );
+    };
 
     // Fill board with piece
     const fillBoard = (piece: Piece) => {
@@ -245,8 +268,15 @@ const TetrisBackground = () => {
           if (piece.data[x][y] === 1) {
             const boardX = piece.x + x;
             const boardY = piece.y + y;
-            
-            if (boardX >= 0 && boardX < boardWidth && boardY >= 0 && boardY < boardHeight && board[boardX] && board[boardX][boardY]) {
+
+            if (
+              boardX >= 0 &&
+              boardX < boardWidth &&
+              boardY >= 0 &&
+              boardY < boardHeight &&
+              board[boardX] &&
+              board[boardX][boardY]
+            ) {
               board[boardX][boardY].data = 1;
               board[boardX][boardY].colors = piece.colors;
             }
@@ -260,7 +290,7 @@ const TetrisBackground = () => {
       for (let y = boardHeight - 1; y >= 0; y--) {
         let lineFull = true;
         let filledCells = 0;
-        
+
         for (let x = 0; x < boardWidth; x++) {
           if (board[x] && board[x][y] && board[x][y].data === 1) {
             filledCells++;
@@ -311,9 +341,14 @@ const TetrisBackground = () => {
             // Enhanced glow effect
             ctx.shadowColor = board[x][y].colors[0];
             ctx.shadowBlur = 15;
-            
+
             // Main block with gradient
-            const gradient = ctx.createLinearGradient(bX, bY, bX + unitSize, bY + unitSize);
+            const gradient = ctx.createLinearGradient(
+              bX,
+              bY,
+              bX + unitSize,
+              bY + unitSize
+            );
             gradient.addColorStop(0, board[x][y].colors[0]);
             gradient.addColorStop(1, board[x][y].colors[1]);
             ctx.fillStyle = gradient;
@@ -340,9 +375,9 @@ const TetrisBackground = () => {
 
     // Render falling pieces with enhanced effects
     const renderFallingPieces = () => {
-      fallingPieces.forEach((piece) => {
-        for (let x = 0; x < 4; x++) {
-          for (let y = 0; y < 4; y++) {
+      fallingPieces.forEach(piece => {
+      for (let x = 0; x < 4; x++) {
+        for (let y = 0; y < 4; y++) {
             if (piece.data[x][y] === 1) {
               const xPos = (piece.x + x) * unitSize;
               const yPos = (piece.y + y) * unitSize;
@@ -351,9 +386,14 @@ const TetrisBackground = () => {
                 // Enhanced glow effect
                 ctx.shadowColor = piece.colors[0];
                 ctx.shadowBlur = 20;
-                
+
                 // Main block with gradient
-                const gradient = ctx.createLinearGradient(xPos, yPos, xPos + unitSize, yPos + unitSize);
+                const gradient = ctx.createLinearGradient(
+                  xPos,
+                  yPos,
+                  xPos + unitSize,
+                  yPos + unitSize
+                );
                 gradient.addColorStop(0, piece.colors[0]);
                 gradient.addColorStop(1, piece.colors[1]);
                 ctx.fillStyle = gradient;
@@ -382,15 +422,15 @@ const TetrisBackground = () => {
 
     // Update falling pieces with better collision detection
     const updateFallingPieces = () => {
-      fallingPieces = fallingPieces.filter((piece) => {
+      fallingPieces = fallingPieces.filter(piece => {
         // Add frame rate control for slower movement
         piece.y += piece.speed * 0.5; // Reduce speed by half for even slower fall
-        
+
         // Check if piece has landed
         if (!checkMovement(piece, 0, 0)) {
           // Move piece back up one step
           piece.y -= piece.speed * 0.5;
-          
+
           // Fill board and check lines
           fillBoard(piece);
           checkLines();
@@ -407,7 +447,7 @@ const TetrisBackground = () => {
         const y = Math.random() * canvas.height;
         const size = Math.random() * 3;
         const alpha = Math.random() * 0.4;
-        
+
         ctx.fillStyle = `rgba(59, 130, 246, ${alpha})`;
         ctx.fillRect(x, y, size, size);
       }
@@ -417,7 +457,7 @@ const TetrisBackground = () => {
     const renderGrid = () => {
       ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)';
       ctx.lineWidth = 0.5;
-      
+
       // Vertical lines
       for (let x = 0; x <= boardWidth; x++) {
         ctx.beginPath();
@@ -425,7 +465,7 @@ const TetrisBackground = () => {
         ctx.lineTo(x * unitSize, canvas.height);
         ctx.stroke();
       }
-      
+
       // Horizontal lines
       for (let y = 0; y <= boardHeight; y++) {
         ctx.beginPath();
@@ -487,10 +527,11 @@ const TetrisBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-0"
+      className='fixed inset-0 w-full h-full pointer-events-none z-0'
       style={{ opacity: 0.6 }}
     />
   );
 };
 
-export default TetrisBackground; 
+export default TetrisBackground;
+
