@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import {
   Mail,
   Phone,
@@ -19,6 +20,11 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Contact = () => {
   const { theme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   const headerAnimation = useScrollAnimation({ delay: 0.2 });
   const contactInfoAnimation = useScrollAnimation({ delay: 0.4 });
   const statsAnimation = useScrollAnimation({ delay: 0.6 });
@@ -170,7 +176,9 @@ const Contact = () => {
                 </h4>
                 <div className='flex space-x-4'>
                   <motion.a
-                    href='#'
+                    href={isMounted ? 'https://linkedin.com/company/versiory' : '#'}
+                    target={isMounted ? '_blank' : undefined}
+                    rel={isMounted ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className='w-12 h-12 bg-gradient-to-br from-versiory-blue/20 to-versiory-azure/20 border border-versiory-azure/30 rounded-lg flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
@@ -178,7 +186,9 @@ const Contact = () => {
                     <Linkedin size={20} />
                   </motion.a>
                   <motion.a
-                    href='#'
+                    href={isMounted ? 'https://instagram.com/versiory' : '#'}
+                    target={isMounted ? '_blank' : undefined}
+                    rel={isMounted ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className='w-12 h-12 bg-gradient-to-br from-versiory-pink/20 to-versiory-azure/20 border border-versiory-pink/30 rounded-lg flex items-center justify-center text-versiory-pink hover:bg-versiory-pink hover:text-black transition-all duration-300'
@@ -186,7 +196,9 @@ const Contact = () => {
                     <Instagram size={20} />
                   </motion.a>
                   <motion.a
-                    href='#'
+                    href={isMounted ? 'https://github.com/versiory' : '#'}
+                    target={isMounted ? '_blank' : undefined}
+                    rel={isMounted ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className='w-12 h-12 bg-gradient-to-br from-versiory-green/20 to-versiory-azure/20 border border-versiory-green/30 rounded-lg flex items-center justify-center text-versiory-green hover:bg-versiory-green hover:text-black transition-all duration-300'

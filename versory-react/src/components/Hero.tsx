@@ -18,6 +18,11 @@ const Hero = () => {
   const { theme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   const [charIndex, setCharIndex] = useState(0);
   const [isSelected, setIsSelected] = useState(false);
   const [selectionProgress, setSelectionProgress] = useState(0);
@@ -362,9 +367,9 @@ const Hero = () => {
               className='flex flex-col sm:flex-row gap-4'
             >
               <motion.a
-                href='/orcamento'
-                target='_blank'
-                rel='noopener noreferrer'
+                href={isMounted ? '/orcamento' : '#'}
+                target={isMounted ? undefined : undefined}
+                rel={isMounted ? undefined : undefined}
                 className='px-8 py-4 bg-versiory-green text-versiory-black font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out text-lg flex items-center justify-center space-x-2'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -374,6 +379,12 @@ const Hero = () => {
               </motion.a>
 
               <motion.button
+                onClick={() => {
+                  const portfolioSection = document.getElementById('portfolio');
+                  if (portfolioSection) {
+                    portfolioSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className='px-8 py-4 border-2 border-versiory-azure text-versiory-azure font-bold rounded-full hover:bg-versiory-azure hover:text-white transition-all duration-300 ease-in-out text-lg flex items-center justify-center space-x-2'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

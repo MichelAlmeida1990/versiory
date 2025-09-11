@@ -65,7 +65,6 @@ export default function RootLayout({
     <html lang='pt-BR' className='scroll-smooth'>
       <head>
         {/* Preload critical resources */}
-        <link rel='preload' href='/images/logo.png' as='image' />
 
         {/* DNS prefetch for external resources */}
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -74,8 +73,7 @@ export default function RootLayout({
         {/* Preconnect to external domains */}
         <link
           rel='preconnect'
-          href=' orçament  
-        https://fonts.googleapis.com'
+          href='https://fonts.googleapis.com'
         />
         <link
           rel='preconnect'
@@ -91,8 +89,13 @@ export default function RootLayout({
           name='google-site-verification'
           content='HOLP-I_HcPY15Ky3II_QFPAIH2zQ8e844sb'
         />
+        
+        {/* Prevent automatic translation */}
+        <meta name='google' content='notranslate' />
+        <meta name='translate' content='no' />
+        <meta httpEquiv='Content-Language' content='pt-BR' />
       </head>
-      <body className={`${inter.className} antialiased overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased overflow-x-hidden notranslate`} suppressHydrationWarning={true}>
         <GoogleAnalytics
           measurementId={
             process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX'

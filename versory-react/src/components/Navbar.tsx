@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -9,6 +9,11 @@ import Image from 'next/image';
 const Navbar = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -55,6 +60,7 @@ const Navbar = () => {
               alt='versiory Logo'
               width={64}
               height={64}
+              priority
               className='w-16 h-16 object-contain'
             />
             <motion.span
@@ -90,7 +96,9 @@ const Navbar = () => {
           {/* Social Icons */}
           <div className='hidden md:flex items-center space-x-4'>
             <motion.a
-              href='#'
+              href={isMounted ? 'https://facebook.com/versiory' : '#'}
+              target={isMounted ? '_blank' : undefined}
+              rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
               className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
@@ -98,7 +106,9 @@ const Navbar = () => {
               <Facebook size={20} />
             </motion.a>
             <motion.a
-              href='#'
+              href={isMounted ? 'https://instagram.com/versiory' : '#'}
+              target={isMounted ? '_blank' : undefined}
+              rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
               className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
@@ -106,7 +116,9 @@ const Navbar = () => {
               <Instagram size={20} />
             </motion.a>
             <motion.a
-              href='#'
+              href={isMounted ? 'https://linkedin.com/company/versiory' : '#'}
+              target={isMounted ? '_blank' : undefined}
+              rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
               className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
@@ -150,7 +162,9 @@ const Navbar = () => {
             {/* Mobile Social Icons */}
             <div className='flex justify-center space-x-4 pt-4 border-t border-versiory-azure/20'>
               <motion.a
-                href='#'
+                href={isMounted ? 'https://facebook.com/versiory' : '#'}
+                target={isMounted ? '_blank' : undefined}
+                rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
@@ -158,7 +172,9 @@ const Navbar = () => {
                 <Facebook size={20} />
               </motion.a>
               <motion.a
-                href='#'
+                href={isMounted ? 'https://instagram.com/versiory' : '#'}
+                target={isMounted ? '_blank' : undefined}
+                rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
@@ -166,7 +182,9 @@ const Navbar = () => {
                 <Instagram size={20} />
               </motion.a>
               <motion.a
-                href='#'
+                href={isMounted ? 'https://linkedin.com/company/versiory' : '#'}
+                target={isMounted ? '_blank' : undefined}
+                rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'

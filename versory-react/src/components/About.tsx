@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import {
   Target,
   Eye,
@@ -15,6 +17,11 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const About = () => {
   const { theme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const values = [
     {
@@ -165,17 +172,21 @@ const About = () => {
                 Transforme sua presença digital com soluções personalizadas e
                 inovadoras.
               </p>
-              <motion.a
-                href='/orcamento'
+              <motion.button
                 whileHover={{
                   scale: 1.05,
                   boxShadow: '0 0 30px rgba(204, 255, 0, 0.3)',
                 }}
                 whileTap={{ scale: 0.95 }}
-                className='inline-block bg-versiory-green text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all duration-300'
+                className='bg-versiory-green text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all duration-300'
+                onClick={() => {
+                  if (isMounted) {
+                    window.location.href = '/orcamento';
+                  }
+                }}
               >
                 Começar Projeto
-              </motion.a>
+              </motion.button>
             </motion.div>
           </div>
         </div>
