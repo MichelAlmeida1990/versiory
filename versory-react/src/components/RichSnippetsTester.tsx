@@ -13,7 +13,7 @@ export default function RichSnippetsTester({
   title,
 }: RichSnippetsTesterProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<unknown>(null);
   const [error, setError] = useState<string | null>(null);
 
   const testRichSnippets = async () => {

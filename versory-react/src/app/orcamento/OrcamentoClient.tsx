@@ -14,7 +14,6 @@ import {
   Code,
   Shield,
   TrendingUp,
-  Phone,
   Mail,
   MessageCircle,
 } from 'lucide-react';
