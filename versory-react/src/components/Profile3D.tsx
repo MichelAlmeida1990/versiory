@@ -105,21 +105,7 @@ const Contact = () => {
                     <p className='text-sm text-versiory-azure/80'>
                       WhatsApp Principal
                     </p>
-                    <p className='font-semibold'>(11) 95940-7653</p>
-                  </div>
-                </div>
-
-                <div
-                  className={`flex items-center space-x-4 ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}
-                >
-                  <div className='w-12 h-12 bg-gradient-to-br from-versiory-green/20 to-versiory-azure/20 rounded-lg flex items-center justify-center'>
-                    <Phone size={20} className='text-versiory-green' />
-                  </div>
-                  <div>
-                    <p className='text-sm text-versiory-azure/80'>
-                      WhatsApp Secundário
-                    </p>
-                    <p className='font-semibold'>(11) 95854-0171</p>
+                    <p className='font-semibold'>(11) 95991-7953</p>
                   </div>
                 </div>
 
@@ -147,7 +133,7 @@ const Contact = () => {
                 </h4>
                 <div className='flex flex-col sm:flex-row gap-4 mb-6'>
                   <motion.a
-                    href='https://wa.me/5511959407653?text=Olá! Gostaria de saber mais sobre os serviços da VERSIORY.'
+                    href='https://wa.me/5511959917953?text=Olá! Gostaria de saber mais sobre os serviços da VERSIORY.'
                     target='_blank'
                     rel='noopener noreferrer'
                     whileHover={{ scale: 1.05 }}

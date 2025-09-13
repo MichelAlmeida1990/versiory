@@ -9,11 +9,11 @@ export default function SchemaOrg() {
     logo: 'https://versiory.com/images/image_025.png',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+55-11-95940-7653',
+      telephone: '+55-11-95991-7953',
       contactType: 'customer service',
       availableLanguage: 'Portuguese',
     },
-    sameAs: ['https://wa.me/5511959407653', 'mailto:versiory@gmail.com'],
+    sameAs: ['https://wa.me/5511959917953', 'mailto:versiory@gmail.com'],
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'BR',

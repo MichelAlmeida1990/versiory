@@ -166,7 +166,7 @@ npm run analyze
 
 Para dúvidas ou problemas:
 - 📧 Email: versiory@gmail.com
-- 📱 WhatsApp: (11) 95940-7653
+- 📱 WhatsApp: (11) 95991-7953
 - 🌐 Site: https://versiory.com
 
 ---

@@ -482,7 +482,7 @@ export default function OrcamentoClient() {
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <motion.a
-              href='https://wa.me/5511959407653'
+              href='https://wa.me/5511959917953'
               target='_blank'
               rel='noopener noreferrer'
               whileHover={{ scale: 1.05 }}
@@ -495,29 +495,9 @@ export default function OrcamentoClient() {
               <h4 className='text-xl font-bold mb-2 text-white'>
                 WhatsApp Principal
               </h4>
-              <p className='text-sm text-white/70 mb-2'>(11) 95940-7653</p>
+              <p className='text-sm text-white/70 mb-2'>(11) 95991-7953</p>
               <span className='text-xs bg-green-500/20 text-green-400 px-3 py-1 rounded-full'>
                 Resposta Rápida
-              </span>
-            </motion.a>
-
-            <motion.a
-              href='https://wa.me/5511958540171'
-              target='_blank'
-              rel='noopener noreferrer'
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className='text-center p-6 rounded-xl bg-versiory-azure/20 border border-versiory-azure/30 hover:bg-versiory-azure/30 transition-all duration-300 group'
-            >
-              <div className='w-16 h-16 bg-versiory-azure rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform'>
-                <Phone size={32} className='text-white' />
-              </div>
-              <h4 className='text-xl font-bold mb-2 text-white'>
-                WhatsApp Secundário
-              </h4>
-              <p className='text-sm text-white/70 mb-2'>(11) 95854-0171</p>
-              <span className='text-xs bg-versiory-azure/20 text-versiory-azure px-3 py-1 rounded-full'>
-                Suporte Técnico
               </span>
             </motion.a>
 
@@ -682,7 +662,7 @@ export default function OrcamentoClient() {
 
                 <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                   <a
-                    href={`https://wa.me/5511959407653?text=Olá! Gostaria de solicitar um orçamento para o serviço de %0A%0A*${selectedService.title}*%0A%0APreço: ${formatPrice(selectedService.ourPrice)}%0A%0APode me ajudar?`}
+                    href={`https://wa.me/5511959917953?text=Olá! Gostaria de solicitar um orçamento para o serviço de %0A%0A*${selectedService.title}*%0A%0APreço: ${formatPrice(selectedService.ourPrice)}%0A%0APode me ajudar?`}
                     target='_blank'
                     rel='noopener noreferrer'
                     className='px-8 py-4 bg-versiory-green text-white font-bold rounded-full hover:bg-versiory-green/90 transition-colors flex items-center justify-center space-x-2'
