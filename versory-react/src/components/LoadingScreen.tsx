@@ -88,7 +88,7 @@ const LoadingScreen = () => {
               className='w-24 h-24 mx-auto mb-4'
             >
               <Image
-                src='/images/logo.png'
+                src='/images/image_025.png'
                 alt='versiory Logo'
                 width={96}
                 height={96}

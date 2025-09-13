@@ -6,7 +6,7 @@ export default function SchemaOrg() {
     description:
       'Especialistas em desenvolvimento web moderno e soluções digitais inovadoras',
     url: 'https://versiory.com',
-    logo: 'https://versiory.com/images/logo.png',
+    logo: 'https://versiory.com/images/image_025.png',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+55-11-95940-7653',

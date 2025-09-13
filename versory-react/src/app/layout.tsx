@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: 'Versiory',
     images: [
       {
-        url: '/images/logo.png',
+        url: '/images/image_025.png',
         width: 1200,
         height: 630,
         alt: 'Versiory - Desenvolvimento Web Moderno',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: 'Versiory - Desenvolvimento Web Moderno',
     description:
       'Especialistas em desenvolvimento web moderno e soluções digitais inovadoras.',
-    images: ['/images/logo.png'],
+    images: ['/images/image_025.png'],
   },
   alternates: {
     canonical: 'https://versiory.com',

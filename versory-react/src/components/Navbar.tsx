@@ -53,29 +53,42 @@ const Navbar = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className='flex items-center space-x-3'
+            className='flex items-center relative'
           >
-            <Image
-              src='/images/logo.png'
-              alt='versiory Logo'
-              width={64}
-              height={64}
-              priority
-              className='w-16 h-16 object-contain'
-            />
-            <motion.span
-              className='text-3xl font-bold bg-gradient-to-r from-versiory-green to-versiory-azure bg-clip-text text-transparent'
+            {/* Background Color Effect */}
+            <motion.div
+              className='absolute inset-0 rounded-full'
               animate={{
-                opacity: [1, 0.3, 1],
-                filter: ['brightness(1)', 'brightness(0.5)', 'brightness(1)'],
+                background: [
+                  'linear-gradient(45deg, #00ff88, #00d4ff, #ff6b6b, #ffd93d)',
+                  'linear-gradient(45deg, #ff6b6b, #ffd93d, #00ff88, #00d4ff)',
+                  'linear-gradient(45deg, #ffd93d, #00ff88, #00d4ff, #ff6b6b)',
+                  'linear-gradient(45deg, #00d4ff, #ff6b6b, #ffd93d, #00ff88)',
+                  'linear-gradient(45deg, #00ff88, #00d4ff, #ff6b6b, #ffd93d)',
+                ],
               }}
               transition={{
-                opacity: { duration: 2, repeat: Infinity },
-                filter: { duration: 2, repeat: Infinity },
+                duration: 3,
+                repeat: Infinity,
+                ease: 'linear',
               }}
-            >
-              VERSIORY
-            </motion.span>
+              style={{
+                filter: 'blur(20px)',
+                opacity: 0.7,
+              }}
+            />
+            
+            {/* Logo Image */}
+            <div className='relative z-10'>
+              <Image
+                src='/images/image_025.png'
+                alt='versiory Logo'
+                width={280}
+                height={280}
+                priority
+                className='w-64 h-64 object-contain'
+              />
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
