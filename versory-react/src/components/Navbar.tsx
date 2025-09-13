@@ -48,12 +48,12 @@ const Navbar = () => {
             : 'rgba(255, 255, 255, 0.75)',
       }}
     >
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-7xl mx-auto px-2 sm:px-4 lg:px-6'>
         <div className='flex justify-between items-center h-20'>
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className='flex items-center relative'
+            className='flex items-center relative -ml-8'
           >
             {/* Background Color Effect */}
             <motion.div
