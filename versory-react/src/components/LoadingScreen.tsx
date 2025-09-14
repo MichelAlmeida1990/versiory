@@ -96,19 +96,6 @@ const LoadingScreen = () => {
               />
             </motion.div>
 
-            {/* Glow Effect */}
-            <motion.div
-              animate={{
-                opacity: [0.3, 0.8, 0.3],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className='absolute inset-0 bg-gradient-to-br from-versiory-azure/30 via-versiory-pink/30 to-versiory-green/30 rounded-full blur-xl'
-            />
           </div>
 
           {/* Company Name */}
