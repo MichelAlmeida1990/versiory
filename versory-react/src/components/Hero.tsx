@@ -11,6 +11,7 @@ import {
   VolumeX,
 } from 'lucide-react';
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import Link from 'next/link';
 import { useTheme } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle';
 
@@ -366,17 +367,18 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 1.2 }}
               className='flex flex-col sm:flex-row gap-4'
             >
-              <motion.a
-                href={isMounted ? '/orcamento' : '#'}
-                target={isMounted ? undefined : undefined}
-                rel={isMounted ? undefined : undefined}
-                className='px-8 py-4 bg-versiory-green text-versiory-black font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out text-lg flex items-center justify-center space-x-2'
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Começar Projeto</span>
-                <Zap size={20} />
-              </motion.a>
+                <Link
+                  href='/orcamento'
+                  className='px-8 py-4 bg-versiory-green text-versiory-black font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out text-lg flex items-center justify-center space-x-2'
+                >
+                  <span>Começar Projeto</span>
+                  <Zap size={20} />
+                </Link>
+              </motion.div>
 
               <motion.button
                 onClick={() => {

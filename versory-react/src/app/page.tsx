@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import SlidingBanner from '@/components/SlidingBanner';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import ProjectCarousel3D from '@/components/ProjectCarousel3D';
@@ -37,6 +38,7 @@ export default function Home() {
     <main className='min-h-screen'>
       <Navbar />
       <Hero />
+      <SlidingBanner />
       <ProjectCarousel3D />
       <About />
       <Services />

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   Target,
   Eye,
@@ -171,21 +172,20 @@ const About = () => {
                 Transforme sua presença digital com soluções personalizadas e
                 inovadoras.
               </p>
-              <motion.button
+              <motion.div
                 whileHover={{
                   scale: 1.05,
                   boxShadow: '0 0 30px rgba(204, 255, 0, 0.3)',
                 }}
                 whileTap={{ scale: 0.95 }}
-                className='bg-versiory-green text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all duration-300'
-                onClick={() => {
-                  if (isMounted) {
-                    window.location.href = '/orcamento';
-                  }
-                }}
               >
-                Começar Projeto
-              </motion.button>
+                <Link
+                  href='/orcamento'
+                  className='bg-versiory-green text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all duration-300 inline-block'
+                >
+                  Começar Projeto
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
         </div>

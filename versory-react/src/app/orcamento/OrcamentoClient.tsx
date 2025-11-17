@@ -16,6 +16,7 @@ import {
   TrendingUp,
   Mail,
   MessageCircle,
+  Briefcase,
 } from 'lucide-react';
 import Link from 'next/link';
 import TetrisBackground from '@/components/TetrisBackground';
@@ -193,6 +194,28 @@ export default function OrcamentoClient() {
       deliveryTime: '15-20 dias',
       color: 'from-versiory-green to-versiory-pink',
       gradient: 'bg-gradient-to-br from-versiory-green to-versiory-pink',
+    },
+    {
+      id: 8,
+      title: 'Consultoria',
+      description:
+        'Potencialize seus recursos e alcance a excelência na gestão do seu negócio.',
+      icon: Briefcase,
+      category: 'system',
+      features: [
+        'Diagnóstico',
+        'Mapeamento',
+        'Plano de Ação',
+        'Precificação',
+        'Indicadores de desempenho (KPIs)',
+        'Suporte Pós-consultoria',
+      ],
+      basePrice: 1200,
+      marketPrice: 6000,
+      ourPrice: 1200,
+      deliveryTime: '15-20 dias',
+      color: 'from-versiory-azure to-versiory-green',
+      gradient: 'bg-gradient-to-br from-versiory-azure to-versiory-green',
     },
   ];
 

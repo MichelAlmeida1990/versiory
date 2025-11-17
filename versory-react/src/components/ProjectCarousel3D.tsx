@@ -14,6 +14,7 @@ import {
   ShoppingCart,
   Building,
   Camera,
+  ClipboardList,
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import Image from 'next/image';
@@ -45,6 +46,31 @@ const ProjectCarousel3D = () => {
   >('all');
 
   const projects: Project[] = [
+    {
+      id: 8,
+      title: 'Sistema de Gestão de Processos',
+      description:
+        'Sistema completo para gestão e acompanhamento de processos e tarefas. Interface moderna com dashboard interativo, gerenciamento de tarefas, status de processos, filtros avançados e relatórios em tempo real.',
+      image: '/images/gestao-juridica.png',
+      category: 'system',
+      technologies: [
+        'React',
+        'Next.js',
+        'TypeScript',
+        'Tailwind CSS',
+        'Vercel',
+        'Gestão de Tarefas',
+      ],
+      demoUrl: 'https://sistema-de-gest-o-de-processos-si8r.vercel.app/tasks',
+      githubUrl: 'https://github.com/michelalmeida1990',
+      featured: true,
+      stats: {
+        users: '200+',
+        rating: 4.7,
+        date: '2024',
+      },
+      icon: <ClipboardList className='w-6 h-6' />,
+    },
     {
       id: 1,
       title: 'App de Academia',
@@ -373,8 +399,8 @@ const ProjectCarousel3D = () => {
                     whileHover={isActive ? { scale: 1.05 } : {}}
                     className={`w-full h-full rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ${
                       isActive
-                        ? 'ring-4 ring-versiory-green/50 shadow-versiory-green/20'
-                        : 'ring-2 ring-versiory-azure/30'
+                        ? 'ring-8 ring-versiory-green shadow-versiory-green/50'
+                        : 'ring-4 ring-versiory-azure'
                     }`}
                     style={{
                       background: `linear-gradient(135deg, 
@@ -382,7 +408,7 @@ const ProjectCarousel3D = () => {
                         rgba(0, 255, 255, 0.1) 50%, 
                         rgba(204, 255, 0, 0.1) 100%)`,
                       backdropFilter: 'blur(10px)',
-                      border: `1px solid ${theme === 'dark' ? 'rgba(0, 255, 255, 0.2)' : 'rgba(0, 255, 255, 0.3)'}`,
+                      border: `3px solid ${theme === 'dark' ? 'rgba(0, 255, 255, 0.8)' : 'rgba(0, 255, 255, 0.9)'}`,
                     }}
                   >
                     {/* Project Image */}

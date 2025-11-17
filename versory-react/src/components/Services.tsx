@@ -10,6 +10,7 @@ import {
   Zap,
   Shield,
   TrendingUp,
+  Briefcase,
   LucideIcon,
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -100,6 +101,24 @@ const Services = () => {
       features: ['Dashboard', 'Módulos', 'Relatórios', 'API'],
       color: 'from-versiory-brown to-versiory-azure',
       gradient: 'bg-gradient-to-br from-versiory-brown to-versiory-azure',
+    },
+    {
+      id: 7,
+      title: 'Consultoria',
+      description:
+        'Potencialize seus recursos e alcance a excelência na gestão do seu negócio.',
+      icon: Briefcase,
+      category: 'system',
+      features: [
+        'Diagnóstico',
+        'Mapeamento',
+        'Plano de Ação',
+        'Precificação',
+        'Indicadores de desempenho (KPIs)',
+        'Suporte Pós-consultoria',
+      ],
+      color: 'from-versiory-azure to-versiory-green',
+      gradient: 'bg-gradient-to-br from-versiory-azure to-versiory-green',
     },
   ];
 

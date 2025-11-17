@@ -14,6 +14,7 @@ import {
   ShoppingCart,
   Building,
   Camera,
+  ClipboardList,
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import Image from 'next/image';
@@ -105,7 +106,7 @@ const Portfolio = () => {
       title: 'Santo Drink',
       description:
         'E-commerce de bebidas com catálogo de produtos e sistema de carrinho de compras. Plataforma completa para venda online de bebidas.',
-      image: '/images/tech-development.png',
+      image: '/images/gestao-escolar-unsplash.png',
       category: 'ecommerce',
       technologies: ['HTML', 'CSS', 'JavaScript', 'E-commerce'],
       demoUrl: 'https://michelalmeida1990.github.io/SITE-DE-BEBIDAS-DO-SANTO/',
@@ -147,6 +148,31 @@ const Portfolio = () => {
       demoUrl: 'https://michelalmeida1990.github.io/Projeto-Fotografo/',
       githubUrl: 'https://github.com/michelalmeida1990',
       icon: <Camera className='w-6 h-6' />,
+    },
+    {
+      id: 8,
+      title: 'Sistema de Gestão de Processos',
+      description:
+        'Sistema completo para gestão e acompanhamento de processos e tarefas. Interface moderna com dashboard interativo, gerenciamento de tarefas, status de processos, filtros avançados e relatórios em tempo real.',
+      image: '/images/gestao-juridica.png',
+      category: 'system',
+      technologies: [
+        'React',
+        'Next.js',
+        'TypeScript',
+        'Tailwind CSS',
+        'Vercel',
+        'Gestão de Tarefas',
+      ],
+      demoUrl: 'https://sistema-de-gest-o-de-processos-si8r.vercel.app/tasks',
+      githubUrl: 'https://github.com/michelalmeida1990',
+      featured: true,
+      stats: {
+        users: '200+',
+        rating: 4.7,
+        date: '2024',
+      },
+      icon: <ClipboardList className='w-6 h-6' />,
     },
   ];
 

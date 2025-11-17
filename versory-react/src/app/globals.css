@@ -286,3 +286,18 @@ html[data-theme='dark'] body,
 html[data-theme='dark'] html {
   background-color: #000000 !important;
 }
+
+/* Sliding Banner Animation */
+@keyframes slideBanner {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+.animate-slide-banner {
+  animation: slideBanner 20s linear infinite;
+  will-change: transform;
+}
