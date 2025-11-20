@@ -62,8 +62,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='pt-BR' className='scroll-smooth'>
+    <html lang='pt-BR' className='scroll-smooth' data-theme='dark' suppressHydrationWarning>
       <head>
+        {/* Script para aplicar tema antes da hidratação - evita flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('versiory-theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+              })();
+            `,
+          }}
+        />
+        
         {/* Preload critical resources */}
 
         {/* DNS prefetch for external resources */}

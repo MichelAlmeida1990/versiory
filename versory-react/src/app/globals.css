@@ -293,11 +293,67 @@ html[data-theme='dark'] html {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100vw);
+    transform: translateX(-400vw); /* 4 imagens = 4 * 100vw */
+  }
+}
+
+/* Prefixo -webkit- para Chrome/Safari */
+@-webkit-keyframes slideBanner {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-400vw);
+    transform: translateX(-400vw);
+  }
+}
+
+/* Prefixo -moz- para Firefox */
+@-moz-keyframes slideBanner {
+  0% {
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -moz-transform: translateX(-400vw);
+    transform: translateX(-400vw);
   }
 }
 
 .animate-slide-banner {
+  /* Chrome/Safari */
+  -webkit-animation: slideBanner 20s linear infinite;
+  /* Firefox */
+  -moz-animation: slideBanner 20s linear infinite;
+  /* Standard */
   animation: slideBanner 20s linear infinite;
+  /* Hardware acceleration para todos os navegadores */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Otimização de performance */
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+/* Otimizações para mobile */
+@media (max-width: 768px) {
+  .animate-slide-banner {
+    /* Animação mais rápida no mobile para melhor performance */
+    -webkit-animation-duration: 15s;
+    -moz-animation-duration: 15s;
+    animation-duration: 15s;
+  }
+}
+
+/* Reduzir animação para usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-banner {
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+  }
 }

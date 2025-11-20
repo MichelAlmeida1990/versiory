@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
 
 interface GoogleAnalyticsProps {
@@ -9,6 +10,17 @@ interface GoogleAnalyticsProps {
 export default function GoogleAnalytics({
   measurementId,
 }: GoogleAnalyticsProps) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Não renderizar se não houver measurementId válido ou se não estiver no cliente
+  if (!isClient || !measurementId || measurementId === 'G-XXXXXXXXXX') {
+    return null;
+  }
+
   return (
     <>
       <Script

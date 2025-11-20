@@ -14,26 +14,27 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // SEMPRE inicializar com 'dark' para garantir consistência SSR/CSR
   const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
-    // Verificar se há um tema salvo no localStorage
-    const savedTheme = localStorage.getItem('versiory-theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Verificar preferência do sistema
-      const prefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches;
-      setTheme(prefersDark ? 'dark' : 'light');
+    // Aplicar tema inicial imediatamente para evitar flash
+    const savedTheme = localStorage.getItem('versiory-theme') as Theme | null;
+    const initialTheme = savedTheme || 'dark';
+    
+    // Aplicar tema antes de atualizar o estado para evitar flash
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    if (initialTheme !== theme) {
+      setTheme(initialTheme);
     }
   }, []);
 
   useEffect(() => {
     // Aplicar tema ao documento
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('versiory-theme', theme);
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('versiory-theme', theme);
+    }
   }, [theme]);
 
   const toggleTheme = () => {

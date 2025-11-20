@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronLeft,
@@ -16,7 +16,6 @@ import {
   Camera,
   ClipboardList,
 } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
 import Image from 'next/image';
 
 interface Project {
@@ -39,7 +38,6 @@ interface Project {
 }
 
 const ProjectCarousel3D = () => {
-  const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [filter, setFilter] = useState<
     'all' | 'web' | 'mobile' | 'system' | 'ecommerce' | 'professional'
@@ -220,29 +218,50 @@ const ProjectCarousel3D = () => {
     },
   ];
 
-  const nextSlide = () => {
-    setCurrentIndex(prev =>
-      prev === filteredProjects.length - 1 ? 0 : prev + 1
-    );
-  };
+  // Usar useRef para evitar stale closures
+  const filteredProjectsRef = useRef(filteredProjects);
+  const currentIndexRef = useRef(currentIndex);
 
-  const prevSlide = () => {
-    setCurrentIndex(prev =>
-      prev === 0 ? filteredProjects.length - 1 : prev - 1
-    );
-  };
+  // Atualizar refs quando valores mudam
+  useEffect(() => {
+    filteredProjectsRef.current = filteredProjects;
+  }, [filteredProjects]);
+
+  useEffect(() => {
+    currentIndexRef.current = currentIndex;
+  }, [currentIndex]);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex(prev => {
+      const projects = filteredProjectsRef.current;
+      return prev === projects.length - 1 ? 0 : prev + 1;
+    });
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex(prev => {
+      const projects = filteredProjectsRef.current;
+      return prev === 0 ? projects.length - 1 : prev - 1;
+    });
+  }, []);
 
   useEffect(() => {
     setCurrentIndex(0);
   }, [filter]);
 
-  // Auto-play carousel
+  // Auto-play carousel - corrigido para evitar stale closures
   useEffect(() => {
+    if (filteredProjects.length === 0) return;
+
     const interval = setInterval(() => {
-      nextSlide();
+      setCurrentIndex(prev => {
+        const projects = filteredProjectsRef.current;
+        return prev === projects.length - 1 ? 0 : prev + 1;
+      });
     }, 5000);
+
     return () => clearInterval(interval);
-  }, [currentIndex, filteredProjects.length]);
+  }, [filteredProjects.length]);
 
   const getCardStyle = (index: number) => {
     const distance = Math.abs(index - currentIndex);
@@ -277,7 +296,8 @@ const ProjectCarousel3D = () => {
   return (
     <section
       id='portfolio'
-      className={`py-20 relative overflow-hidden ${theme === 'dark' ? 'bg-gradient-to-b from-versiory-black to-versiory-blue/10' : 'bg-transparent'}`}
+      className='py-20 relative overflow-hidden bg-gradient-to-b from-versiory-black to-versiory-blue/10'
+      suppressHydrationWarning
     >
       {/* Background Effects */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
@@ -304,7 +324,7 @@ const ProjectCarousel3D = () => {
           </div>
 
           <h2
-            className={`text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+            className='text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white'
           >
             <span className='bg-gradient-to-r from-versiory-green via-versiory-azure to-versiory-pink bg-clip-text text-transparent'>
               PROJETOS
@@ -312,7 +332,7 @@ const ProjectCarousel3D = () => {
           </h2>
 
           <p
-            className={`text-lg sm:text-xl max-w-3xl mx-auto px-4 ${theme === 'dark' ? 'text-white/80' : 'text-gray-700'}`}
+            className='text-lg sm:text-xl max-w-3xl mx-auto px-4 text-white/80'
           >
             Carrossel de cartas 3D com projetos reais desenvolvidos com
             tecnologias modernas.
@@ -351,7 +371,7 @@ const ProjectCarousel3D = () => {
                   className={`px-3 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm ${
                     filter === category.key
                       ? `bg-gradient-to-r ${category.color} text-black`
-                      : `${theme === 'dark' ? 'bg-versiory-black/50' : 'bg-blue-light'} ${theme === 'dark' ? 'text-white' : 'text-gray-800'} border border-versiory-azure/30 hover:border-versiory-green/50`
+                      : 'bg-versiory-black/50 text-white border border-versiory-azure/30 hover:border-versiory-green/50'
                   }`}
                 >
                   <span className='w-4 h-4 sm:w-5 sm:h-5'>{category.icon}</span>
@@ -404,11 +424,11 @@ const ProjectCarousel3D = () => {
                     }`}
                     style={{
                       background: `linear-gradient(135deg, 
-                        ${theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.9)'} 0%, 
+                        rgba(0, 0, 0, 0.8) 0%, 
                         rgba(0, 255, 255, 0.1) 50%, 
                         rgba(204, 255, 0, 0.1) 100%)`,
                       backdropFilter: 'blur(10px)',
-                      border: `3px solid ${theme === 'dark' ? 'rgba(0, 255, 255, 0.8)' : 'rgba(0, 255, 255, 0.9)'}`,
+                      border: '3px solid rgba(0, 255, 255, 0.8)',
                     }}
                   >
                     {/* Project Image */}
@@ -449,7 +469,7 @@ const ProjectCarousel3D = () => {
                     <div className='p-4 sm:p-6 md:p-8 space-y-3 sm:space-y-4 md:space-y-6'>
                       <div>
                         <h3
-                          className={`text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+                          className='text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-white'
                         >
                           {project.title}
                         </h3>
@@ -459,7 +479,7 @@ const ProjectCarousel3D = () => {
                           rel='noopener noreferrer'
                           whileHover={{ scale: 1.02 }}
                           className={`text-sm sm:text-base leading-relaxed font-bold cursor-pointer transition-all duration-300 ${
-                            theme === 'dark' ? 'text-white/70' : 'text-gray-600'
+                            'text-white/70'
                           }`}
                         >
                           {project.description.length > 80
@@ -473,7 +493,7 @@ const ProjectCarousel3D = () => {
                         {project.technologies.slice(0, 2).map(tech => (
                           <span
                             key={tech}
-                            className={`px-2 py-1 border border-versiory-azure/60 rounded-full text-xs ${theme === 'dark' ? 'bg-versiory-black/30 text-white/80' : 'bg-blue-light/70 text-gray-700'}`}
+                            className='px-2 py-1 border border-versiory-azure/60 rounded-full text-xs bg-versiory-black/30 text-white/80'
                           >
                             {tech}
                           </span>
