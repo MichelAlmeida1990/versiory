@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Linkedin, Youtube, Music2, MessageSquare } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import Image from 'next/image';
 
@@ -81,36 +81,72 @@ const Navbar = () => {
           </div>
 
           {/* Social Icons */}
-          <div className='hidden md:flex items-center space-x-4'>
+          <div className='hidden md:flex items-center space-x-2'>
             <motion.a
-              href={isMounted ? 'https://facebook.com/versiory' : '#'}
+              href={isMounted ? 'https://www.facebook.com/versiony.oficial/' : '#'}
               target={isMounted ? '_blank' : undefined}
               rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              title='Facebook'
             >
-              <Facebook size={20} />
+              <Facebook size={18} />
             </motion.a>
             <motion.a
-              href={isMounted ? 'https://instagram.com/versiory' : '#'}
+              href={isMounted ? 'https://www.instagram.com/versiony/' : '#'}
               target={isMounted ? '_blank' : undefined}
               rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              title='Instagram'
             >
-              <Instagram size={20} />
+              <Instagram size={18} />
             </motion.a>
             <motion.a
-              href={isMounted ? 'https://linkedin.com/company/versiory' : '#'}
+              href={isMounted ? 'https://www.linkedin.com/company/versiony' : '#'}
               target={isMounted ? '_blank' : undefined}
               rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
-              className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              title='LinkedIn'
             >
-              <Linkedin size={20} />
+              <Linkedin size={18} />
+            </motion.a>
+            <motion.a
+              href={isMounted ? 'https://www.tiktok.com/@versiony_oficial' : '#'}
+              target={isMounted ? '_blank' : undefined}
+              rel={isMounted ? 'noopener noreferrer' : undefined}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              title='TikTok'
+            >
+              <Music2 size={18} />
+            </motion.a>
+            <motion.a
+              href={isMounted ? 'https://www.youtube.com/@versiony' : '#'}
+              target={isMounted ? '_blank' : undefined}
+              rel={isMounted ? 'noopener noreferrer' : undefined}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              title='YouTube'
+            >
+              <Youtube size={18} />
+            </motion.a>
+            <motion.a
+              href={isMounted ? 'https://www.threads.com/@versiony' : '#'}
+              target={isMounted ? '_blank' : undefined}
+              rel={isMounted ? 'noopener noreferrer' : undefined}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
+              title='Threads'
+            >
+              <MessageSquare size={18} />
             </motion.a>
           </div>
 
@@ -147,36 +183,72 @@ const Navbar = () => {
             ))}
 
             {/* Mobile Social Icons */}
-            <div className='flex justify-center space-x-4 pt-4 border-t border-versiory-azure/20'>
+            <div className='flex flex-wrap justify-center gap-2 pt-4 border-t border-versiory-azure/20'>
               <motion.a
-                href={isMounted ? 'https://facebook.com/versiory' : '#'}
+                href={isMounted ? 'https://www.facebook.com/versiony.oficial/' : '#'}
                 target={isMounted ? '_blank' : undefined}
                 rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                title='Facebook'
               >
-                <Facebook size={20} />
+                <Facebook size={18} />
               </motion.a>
               <motion.a
-                href={isMounted ? 'https://instagram.com/versiory' : '#'}
+                href={isMounted ? 'https://www.instagram.com/versiony/' : '#'}
                 target={isMounted ? '_blank' : undefined}
                 rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                title='Instagram'
               >
-                <Instagram size={20} />
+                <Instagram size={18} />
               </motion.a>
               <motion.a
-                href={isMounted ? 'https://linkedin.com/company/versiory' : '#'}
+                href={isMounted ? 'https://www.linkedin.com/company/versiony' : '#'}
                 target={isMounted ? '_blank' : undefined}
                 rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 h-10 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                title='LinkedIn'
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} />
+              </motion.a>
+              <motion.a
+                href={isMounted ? 'https://www.tiktok.com/@versiony_oficial' : '#'}
+                target={isMounted ? '_blank' : undefined}
+                rel={isMounted ? 'noopener noreferrer' : undefined}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                title='TikTok'
+              >
+                <Music2 size={18} />
+              </motion.a>
+              <motion.a
+                href={isMounted ? 'https://www.youtube.com/@versiony' : '#'}
+                target={isMounted ? '_blank' : undefined}
+                rel={isMounted ? 'noopener noreferrer' : undefined}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                title='YouTube'
+              >
+                <Youtube size={18} />
+              </motion.a>
+              <motion.a
+                href={isMounted ? 'https://www.threads.com/@versiony' : '#'}
+                target={isMounted ? '_blank' : undefined}
+                rel={isMounted ? 'noopener noreferrer' : undefined}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
+                title='Threads'
+              >
+                <MessageSquare size={18} />
               </motion.a>
             </div>
           </div>

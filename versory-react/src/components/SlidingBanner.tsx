@@ -6,17 +6,38 @@ import { useState, useEffect } from 'react';
 const SlidingBanner = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [cacheBuster, setCacheBuster] = useState<string>('');
   
   // Number of images for seamless loop
   const imageCount = 4;
   
   // Versão da imagem - ATUALIZE ESTE VALOR quando trocar a imagem black.jpg
   // Exemplo: 'v2', 'v3', '82-desconto', etc.
-  // Isso força o navegador a buscar a nova versão da imagem
-  const imageVersion = '82-desconto';
+  const imageVersion = '82-desconto-v2';
 
   useEffect(() => {
     setIsMounted(true);
+    // Gera timestamp dinâmico para forçar atualização
+    const timestamp = Date.now();
+    setCacheBuster(`${imageVersion}-${timestamp}`);
+    
+    // Limpa cache do navegador se disponível
+    if ('caches' in window) {
+      caches.keys().then(names => {
+        names.forEach(name => {
+          caches.delete(name);
+        });
+      });
+    }
+    
+    // Força reload da imagem após um pequeno delay
+    const forceReload = () => {
+      const timestamp2 = Date.now();
+      setCacheBuster(`${imageVersion}-${timestamp2}`);
+    };
+    
+    // Tenta forçar reload após 100ms
+    setTimeout(forceReload, 100);
   }, []);
 
   const handleImageLoad = () => {
@@ -41,6 +62,9 @@ const SlidingBanner = () => {
           position: 'absolute',
           top: 0,
           left: 0,
+          margin: 0,
+          padding: 0,
+          gap: 0,
           opacity: isMounted && imagesLoaded >= 2 ? 1 : 0,
           transition: 'opacity 0.5s ease-in-out',
         }}
@@ -53,21 +77,27 @@ const SlidingBanner = () => {
               width: '100vw',
               height: '100%',
               minWidth: '100vw',
+              maxWidth: '100vw',
               position: 'relative',
+              margin: 0,
+              padding: 0,
             }}
           >
             <Image
-              key={`banner-${index}-${imageVersion}`}
-              src={`/images/black.jpg?t=${imageVersion}`}
+              key={`banner-${index}-${cacheBuster || imageVersion}`}
+              src={cacheBuster ? `/images/black.jpg?cb=${cacheBuster}&v=${imageVersion}` : `/images/black.jpg?v=${imageVersion}`}
               alt={`Banner ${index + 1}`}
               fill
-              className='object-cover'
               quality={90}
               priority={index < 2}
               sizes='100vw'
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
+                width: '100%',
+                height: '100%',
+                margin: 0,
+                padding: 0,
               }}
               onLoad={handleImageLoad}
               onError={(e) => {
@@ -86,9 +116,7 @@ const SlidingBanner = () => {
         </div>
       )}
 
-      {/* Gradient edges for smooth blending - Responsive */}
-      <div className='absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-versiory-black to-transparent z-10 pointer-events-none' />
-      <div className='absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-versiory-black to-transparent z-10 pointer-events-none' />
+      {/* Gradient edges removidos para evitar espaços brancos */}
     </section>
   );
 };

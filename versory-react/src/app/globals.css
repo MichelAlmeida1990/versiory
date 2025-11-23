@@ -337,6 +337,10 @@ html[data-theme='dark'] html {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
+  /* Remove qualquer espaçamento entre imagens */
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Otimizações para mobile */
