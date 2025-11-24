@@ -8,16 +8,12 @@ import {
   MapPin,
   Linkedin,
   Instagram,
-  Github,
   Award,
   Users,
   Clock,
   CheckCircle,
   MessageCircle,
   Facebook,
-  Youtube,
-  Music2,
-  MessageSquare,
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -197,50 +193,6 @@ const Contact = () => {
                     title='LinkedIn'
                   >
                     <Linkedin size={20} />
-                  </motion.a>
-                  <motion.a
-                    href={isMounted ? 'https://www.tiktok.com/@versiony_oficial' : '#'}
-                    target={isMounted ? '_blank' : undefined}
-                    rel={isMounted ? 'noopener noreferrer' : undefined}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className='w-12 h-12 bg-gradient-to-br from-versiory-black/20 to-versiory-pink/20 border border-versiory-pink/30 rounded-lg flex items-center justify-center text-versiory-pink hover:bg-versiory-pink hover:text-black transition-all duration-300'
-                    title='TikTok'
-                  >
-                    <Music2 size={20} />
-                  </motion.a>
-                  <motion.a
-                    href={isMounted ? 'https://www.youtube.com/@versiony' : '#'}
-                    target={isMounted ? '_blank' : undefined}
-                    rel={isMounted ? 'noopener noreferrer' : undefined}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className='w-12 h-12 bg-gradient-to-br from-versiory-red/20 to-versiory-pink/20 border border-versiory-red/30 rounded-lg flex items-center justify-center text-versiory-red hover:bg-versiory-red hover:text-white transition-all duration-300'
-                    title='YouTube'
-                  >
-                    <Youtube size={20} />
-                  </motion.a>
-                  <motion.a
-                    href={isMounted ? 'https://www.threads.com/@versiony' : '#'}
-                    target={isMounted ? '_blank' : undefined}
-                    rel={isMounted ? 'noopener noreferrer' : undefined}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className='w-12 h-12 bg-gradient-to-br from-versiory-black/20 to-versiory-azure/20 border border-versiory-azure/30 rounded-lg flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
-                    title='Threads'
-                  >
-                    <MessageSquare size={20} />
-                  </motion.a>
-                  <motion.a
-                    href={isMounted ? 'https://github.com/versiory' : '#'}
-                    target={isMounted ? '_blank' : undefined}
-                    rel={isMounted ? 'noopener noreferrer' : undefined}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className='w-12 h-12 bg-gradient-to-br from-versiory-green/20 to-versiory-azure/20 border border-versiory-green/30 rounded-lg flex items-center justify-center text-versiory-green hover:bg-versiory-green hover:text-black transition-all duration-300'
-                    title='GitHub'
-                  >
-                    <Github size={20} />
                   </motion.a>
                 </div>
               </div>

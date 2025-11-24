@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import {
   Code,
   X,
@@ -18,6 +19,7 @@ import {
   FileCode,
   Server,
   GitBranch,
+  Rocket,
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -230,16 +232,20 @@ const TechStackVisor = () => {
 
   return (
     <>
-      {/* Botão de Abertura */}
-      <motion.button
-        onClick={() => setIsOpen(true)}
+      {/* Botão Começar Projeto */}
+      <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className='fixed bottom-8 right-8 z-40 bg-gradient-to-r from-versiory-green to-versiory-azure text-black px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2'
+        className='fixed bottom-8 right-8 z-40'
       >
-        <Code size={20} />
-        <span>Tech Stack</span>
-      </motion.button>
+        <Link
+          href='/orcamento'
+          className='bg-gradient-to-r from-versiory-green to-versiory-azure text-black px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2'
+        >
+          <Rocket size={20} />
+          <span>Começar Projeto</span>
+        </Link>
+      </motion.div>
 
       {/* Visor Modal */}
       <AnimatePresence>

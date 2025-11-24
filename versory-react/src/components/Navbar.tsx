@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Facebook, Instagram, Linkedin, Youtube, Music2, MessageSquare } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import Image from 'next/image';
 
@@ -115,39 +115,6 @@ const Navbar = () => {
             >
               <Linkedin size={18} />
             </motion.a>
-            <motion.a
-              href={isMounted ? 'https://www.tiktok.com/@versiony_oficial' : '#'}
-              target={isMounted ? '_blank' : undefined}
-              rel={isMounted ? 'noopener noreferrer' : undefined}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
-              title='TikTok'
-            >
-              <Music2 size={18} />
-            </motion.a>
-            <motion.a
-              href={isMounted ? 'https://www.youtube.com/@versiony' : '#'}
-              target={isMounted ? '_blank' : undefined}
-              rel={isMounted ? 'noopener noreferrer' : undefined}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
-              title='YouTube'
-            >
-              <Youtube size={18} />
-            </motion.a>
-            <motion.a
-              href={isMounted ? 'https://www.threads.com/@versiony' : '#'}
-              target={isMounted ? '_blank' : undefined}
-              rel={isMounted ? 'noopener noreferrer' : undefined}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure hover:bg-versiory-azure hover:text-black transition-all duration-300'
-              title='Threads'
-            >
-              <MessageSquare size={18} />
-            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -216,39 +183,6 @@ const Navbar = () => {
                 title='LinkedIn'
               >
                 <Linkedin size={18} />
-              </motion.a>
-              <motion.a
-                href={isMounted ? 'https://www.tiktok.com/@versiony_oficial' : '#'}
-                target={isMounted ? '_blank' : undefined}
-                rel={isMounted ? 'noopener noreferrer' : undefined}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
-                title='TikTok'
-              >
-                <Music2 size={18} />
-              </motion.a>
-              <motion.a
-                href={isMounted ? 'https://www.youtube.com/@versiony' : '#'}
-                target={isMounted ? '_blank' : undefined}
-                rel={isMounted ? 'noopener noreferrer' : undefined}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
-                title='YouTube'
-              >
-                <Youtube size={18} />
-              </motion.a>
-              <motion.a
-                href={isMounted ? 'https://www.threads.com/@versiony' : '#'}
-                target={isMounted ? '_blank' : undefined}
-                rel={isMounted ? 'noopener noreferrer' : undefined}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className='w-9 h-9 bg-versiory-blue/20 border border-versiory-azure/30 rounded-full flex items-center justify-center text-versiory-azure'
-                title='Threads'
-              >
-                <MessageSquare size={18} />
               </motion.a>
             </div>
           </div>
