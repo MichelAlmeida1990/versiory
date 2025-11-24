@@ -83,7 +83,7 @@ const Navbar = () => {
           {/* Social Icons */}
           <div className='hidden md:flex items-center space-x-2'>
             <motion.a
-              href={isMounted ? 'https://www.facebook.com/versiony.oficial/' : '#'}
+              href={isMounted ? 'https://www.facebook.com/versiory.oficial/' : '#'}
               target={isMounted ? '_blank' : undefined}
               rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
@@ -94,7 +94,7 @@ const Navbar = () => {
               <Facebook size={18} />
             </motion.a>
             <motion.a
-              href={isMounted ? 'https://www.instagram.com/versiony/' : '#'}
+              href={isMounted ? 'https://www.instagram.com/versiory/' : '#'}
               target={isMounted ? '_blank' : undefined}
               rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
@@ -105,7 +105,7 @@ const Navbar = () => {
               <Instagram size={18} />
             </motion.a>
             <motion.a
-              href={isMounted ? 'https://www.linkedin.com/company/versiony' : '#'}
+              href={isMounted ? 'https://www.linkedin.com/company/versiory' : '#'}
               target={isMounted ? '_blank' : undefined}
               rel={isMounted ? 'noopener noreferrer' : undefined}
               whileHover={{ scale: 1.1, y: -2 }}
@@ -152,7 +152,7 @@ const Navbar = () => {
             {/* Mobile Social Icons */}
             <div className='flex flex-wrap justify-center gap-2 pt-4 border-t border-versiory-azure/20'>
               <motion.a
-                href={isMounted ? 'https://www.facebook.com/versiony.oficial/' : '#'}
+                href={isMounted ? 'https://www.facebook.com/versiory.oficial/' : '#'}
                 target={isMounted ? '_blank' : undefined}
                 rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
@@ -163,7 +163,7 @@ const Navbar = () => {
                 <Facebook size={18} />
               </motion.a>
               <motion.a
-                href={isMounted ? 'https://www.instagram.com/versiony/' : '#'}
+                href={isMounted ? 'https://www.instagram.com/versiory/' : '#'}
                 target={isMounted ? '_blank' : undefined}
                 rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}
@@ -174,7 +174,7 @@ const Navbar = () => {
                 <Instagram size={18} />
               </motion.a>
               <motion.a
-                href={isMounted ? 'https://www.linkedin.com/company/versiony' : '#'}
+                href={isMounted ? 'https://www.linkedin.com/company/versiory' : '#'}
                 target={isMounted ? '_blank' : undefined}
                 rel={isMounted ? 'noopener noreferrer' : undefined}
                 whileHover={{ scale: 1.1 }}

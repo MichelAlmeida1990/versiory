@@ -162,7 +162,7 @@ const Contact = () => {
                 </h4>
                 <div className='flex flex-wrap gap-3'>
                   <motion.a
-                    href={isMounted ? 'https://www.facebook.com/versiony.oficial/' : '#'}
+                    href={isMounted ? 'https://www.facebook.com/versiory.oficial/' : '#'}
                     target={isMounted ? '_blank' : undefined}
                     rel={isMounted ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.1 }}
@@ -173,7 +173,7 @@ const Contact = () => {
                     <Facebook size={20} />
                   </motion.a>
                   <motion.a
-                    href={isMounted ? 'https://www.instagram.com/versiony/' : '#'}
+                    href={isMounted ? 'https://www.instagram.com/versiory/' : '#'}
                     target={isMounted ? '_blank' : undefined}
                     rel={isMounted ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.1 }}
@@ -184,7 +184,7 @@ const Contact = () => {
                     <Instagram size={20} />
                   </motion.a>
                   <motion.a
-                    href={isMounted ? 'https://www.linkedin.com/company/versiony' : '#'}
+                    href={isMounted ? 'https://www.linkedin.com/company/versiory' : '#'}
                     target={isMounted ? '_blank' : undefined}
                     rel={isMounted ? 'noopener noreferrer' : undefined}
                     whileHover={{ scale: 1.1 }}
