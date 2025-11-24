@@ -389,7 +389,7 @@ export default function OrcamentoClient() {
           >
             <div className='relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border border-versiory-azure/30'>
               <Image
-                src='/images/plano pagamento.jpg'
+                src='/images/plano%20pagamento.jpg'
                 alt='Planos de Pagamento Versiory'
                 width={1200}
                 height={800}
