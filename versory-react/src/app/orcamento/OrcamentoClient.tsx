@@ -19,6 +19,7 @@ import {
   Briefcase,
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import TetrisBackground from '@/components/TetrisBackground';
 
 interface Service {
@@ -378,6 +379,25 @@ export default function OrcamentoClient() {
               Escolha a forma que melhor se adapta ao seu fluxo de caixa
             </p>
           </div>
+
+          {/* Imagem dos Planos de Pagamento */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className='mb-8 flex justify-center'
+          >
+            <div className='relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border border-versiory-azure/30'>
+              <Image
+                src='/images/plano pagamento.jpg'
+                alt='Planos de Pagamento Versiory'
+                width={1200}
+                height={800}
+                className='w-full h-auto object-contain'
+                priority
+              />
+            </div>
+          </motion.div>
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div className='text-center p-6 rounded-xl bg-versiory-green/10 border border-versiory-green/30'>
